@@ -8,9 +8,9 @@
     "authors": ["Ignacio Garrido", "Alex Fierro"],
     "topics": ["Macroeconomía", "Introducción"],
     "files": {
-      "Listado": "assets/material/ayudantia-01/ayudantia-01.pdf",
+      "listado": "assets/material/ayudantia-01/ayudantia-01.pdf",
       "pauta": "assets/material/ayudantia-01/PAUTA-ayudantia-01.pdf",
-      "PPT": "assets/material/ayudantia-01/PPT-ayudantia-01.pdf",
+      "ppt": "assets/material/ayudantia-01/PPT-ayudantia-01.pdf",
       "latex": "assets/material/ayudantia-01/ayudantia-01.tex"
     }
   },
