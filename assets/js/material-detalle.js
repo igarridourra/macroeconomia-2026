@@ -52,6 +52,7 @@
     var files = item.files || {};
     var PREVIEWABLE = [
       { key: "pdf", label: "Listado" },
+      { key: "listado", label: "Listado" },
       { key: "pauta", label: "Pauta" },
       { key: "ppt", label: "Presentación" }
     ];
