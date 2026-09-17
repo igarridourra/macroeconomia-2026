@@ -28,18 +28,5 @@
       "PPT": "assets/material/ayudantia-02/PPT-ayudantia-02.pdf",
       "latex": "assets/material/ayudantia-02/ayudantia-02.tex"
     }
-  },
-  {
-    "id": "ayudantia-03",
-    "title": "Ayudantía 03 — Modelo OA-DA",
-    "description": "Construcción del modelo de Oferta Agregada y Demanda Agregada, y su uso para analizar shocks económicos en el corto y largo plazo.",
-    "category": "Ayudantías",
-    "date": "2026-08-24",
-    "authors": ["Ignacio Garrido", "Alex Fierro"],
-    "topics": ["Modelo OA-DA", "Oferta Agregada", "Demanda Agregada"],
-    "files": {
-      "Listado": "assets/material/ayudantia-03/ayudantia-03.pdf",
-      "PPT": "assets/material/ayudantia-03/PPT-ayudantia-03.pdf"
-    }
   }
 ]
