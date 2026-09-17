@@ -7,6 +7,8 @@
 (function () {
   "use strict";
 
+  var PREVIEWABLE_KEYS = ["pdf", "listado", "ppt", "pauta"];
+
   var FORMAT_ACTIONS = {
     pdf: [{ label: "Ver PDF", primary: true }, { label: "Descargar PDF", primary: false }],
     ppt: [{ label: "Ver presentación", primary: true }, { label: "Descargar presentación", primary: false }],
@@ -33,12 +35,14 @@
 
     Object.keys(FORMAT_ACTIONS).forEach(function (key) {
       if (!files[key]) return;
-      FORMAT_ACTIONS[key].forEach(function (action) {
+      var isPreviewable = PREVIEWABLE_KEYS.indexOf(key) !== -1;
+      FORMAT_ACTIONS[key].forEach(function (action, index) {
+        var isViewAction = isPreviewable && index === 0;
         var classes = "btn " + (action.primary ? "btn-primary" : "btn-secondary");
-        var isPdfView = key === "pdf" && action.label === "Ver PDF";
-        var target = isPdfView ? "" : ' download';
+        var target = isViewAction ? "" : ' download';
+        var dataAttr = isViewAction ? ' data-preview-key="' + key + '"' : "";
         buttons.push(
-          '<a class="' + classes + '" href="' + AyudantiaData.escapeHTML(files[key]) + '"' + target + ">" +
+          '<a class="' + classes + '"' + dataAttr + ' href="' + AyudantiaData.escapeHTML(files[key]) + '"' + target + ">" +
           AyudantiaData.escapeHTML(action.label) +
           "</a>"
         );
@@ -50,30 +54,14 @@
 
   function previewHTML(item) {
     var files = item.files || {};
-    var PREVIEWABLE = [
-      { key: "pdf", label: "Listado" },
-      { key: "listado", label: "Listado" },
-      { key: "pauta", label: "Pauta" },
-      { key: "ppt", label: "Presentación" }
-    ];
-
-    var blocks = PREVIEWABLE
-      .filter(function (entry) { return files[entry.key]; })
-      .map(function (entry) {
-        return (
-          "<h3>" + AyudantiaData.escapeHTML(entry.label) + "</h3>" +
-          '<embed src="' + AyudantiaData.escapeHTML(files[entry.key]) + '" type="application/pdf" title="Previsualización de ' +
-          AyudantiaData.escapeHTML(item.title) + " — " + AyudantiaData.escapeHTML(entry.label) + '">'
-        );
-      })
-      .join("");
-
-    if (!blocks) return "";
+    var firstKey = PREVIEWABLE_KEYS.filter(function (k) { return files[k]; })[0];
+    if (!firstKey) return "";
 
     return (
       '<div class="detail-preview">' +
       "<h2>Previsualización</h2>" +
-      blocks +
+      '<embed id="preview-embed" src="' + AyudantiaData.escapeHTML(files[firstKey]) + '" type="application/pdf" title="Previsualización de ' +
+      AyudantiaData.escapeHTML(item.title) + '">' +
       "</div>"
     );
   }
@@ -117,6 +105,7 @@
     var container = document.querySelector("[data-material-detail]");
     if (!container) return;
 
+
     var requestedId = getRequestedId();
     if (!requestedId) {
       AyudantiaData.renderStateMessage(
@@ -152,4 +141,16 @@
         );
       });
   });
+  document.addEventListener("click", function (e) {
+    var trigger = e.target.closest && e.target.closest("[data-preview-key]");
+    if (!trigger) return;
+    e.preventDefault();
+    var embed = document.getElementById("preview-embed");
+    if (embed) embed.src = trigger.getAttribute("href");
+    document.querySelectorAll("[data-preview-key]").forEach(function (el) {
+      el.classList.remove("is-active");
+    });
+    trigger.classList.add("is-active");
+  });
+  
 })();

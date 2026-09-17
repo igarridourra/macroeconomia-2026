@@ -32,7 +32,7 @@ var AyudantiaData = (function () {
   };
 
   function fetchJSON(path) {
-    return fetch(path).then(function (response) {
+    return fetch(path, { cache: "no-store" }).then(function (response) {
       if (!response.ok) {
         throw new Error("No se pudo cargar " + path + " (HTTP " + response.status + ")");
       }

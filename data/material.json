@@ -23,9 +23,9 @@
     "authors": ["Ignacio Garrido", "Alex Fierro"],
     "topics": ["Cuentas Nacionales", "PIB", "Componentes"],
     "files": {
-      "Listado": "assets/material/ayudantia-02/ayudantia-02.pdf",
+      "listado": "assets/material/ayudantia-02/ayudantia-02.pdf",
       "pauta": "assets/material/ayudantia-02/PAUTA-ayudantia-02.pdf",
-      "PPT": "assets/material/ayudantia-02/PPT-ayudantia-02.pdf",
+      "ppt": "assets/material/ayudantia-02/PPT-ayudantia-02.pdf",
       "latex": "assets/material/ayudantia-02/ayudantia-02.tex"
     }
   }
