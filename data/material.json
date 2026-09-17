@@ -1,0 +1,41 @@
+[
+  {
+    "id": "ayudantia-01",
+    "title": "Ayudantía 01 — Introducción a la Macroeconomía",
+    "description": "Conceptos fundamentales de macroeconomía: variables agregadas, PIB, y los principales mercados que estudiaremos durante el curso.",
+    "category": "Ayudantías",
+    "date": "2026-08-10",
+    "authors": ["Ignacio Garrido", "Alex Fierro"],
+    "topics": ["Macroeconomía", "Introducción"],
+    "files": {
+      "pdf": "assets/material/ayudantia-01/ayudantia-01.pdf",
+      "latex": "assets/material/ayudantia-01/ayudantia-01.tex",
+      "source": "assets/material/ayudantia-01/ayudantia-01.zip"
+    }
+  },
+  {
+    "id": "ayudantia-02",
+    "title": "Ayudantía 02 — Inflación y desempleo",
+    "description": "Estudio de la inflación y el desempleo: cómo se miden, sus principales indicadores y la relación entre ambos.",
+    "category": "Ayudantías",
+    "date": "2026-08-17",
+    "authors": ["Ignacio Garrido", "Alex Fierro"],
+    "topics": ["Inflación", "Desempleo", "Indicadores"],
+    "files": {
+      "pdf": "assets/material/ayudantia-02/ayudantia-02.pdf",
+      "latex": "assets/material/ayudantia-02/ayudantia-02.tex"
+    }
+  },
+  {
+    "id": "ayudantia-03",
+    "title": "Ayudantía 03 — Modelo OA-DA",
+    "description": "Construcción del modelo de Oferta Agregada y Demanda Agregada, y su uso para analizar shocks económicos en el corto y largo plazo.",
+    "category": "Ayudantías",
+    "date": "2026-08-24",
+    "authors": ["Ignacio Garrido", "Alex Fierro"],
+    "topics": ["Modelo OA-DA", "Oferta Agregada", "Demanda Agregada"],
+    "files": {
+      "pdf": "assets/material/ayudantia-03/ayudantia-03.pdf"
+    }
+  }
+]

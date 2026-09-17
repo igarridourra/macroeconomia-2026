@@ -1,0 +1,14 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+*.swp
+
+# Archivos temporales de LaTeX (por si compilas los .tex localmente)
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz

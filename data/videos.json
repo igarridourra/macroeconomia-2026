@@ -1,0 +1,18 @@
+[
+  {
+    "id": "video-ejemplo-01",
+    "title": "[Ejemplo] Clase 01 — Introducción a la Macroeconomía",
+    "professor": "Nombre del profesor",
+    "topic": "Introducción",
+    "description": "Entrada de ejemplo. Reemplázala por el video real de la clase, editando data/videos.json.",
+    "youtube": "https://www.youtube.com/watch?v=VIDEO_ID"
+  },
+  {
+    "id": "video-ejemplo-02",
+    "title": "[Ejemplo] Clase 02 — Inflación y desempleo",
+    "professor": "Nombre del profesor",
+    "topic": "Inflación y desempleo",
+    "description": "Entrada de ejemplo. Reemplázala por el video real de la clase, editando data/videos.json.",
+    "youtube": "https://www.youtube.com/watch?v=VIDEO_ID"
+  }
+]

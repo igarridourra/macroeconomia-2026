@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Material académico | Material de Ayudantía</title>
+  <meta name="description" content="Busca y filtra ayudantías, apuntes, ejercicios, controles, certámenes y presentaciones del curso de Macroeconomía, Universidad de Concepción, semestre 2026-2.">
+  <meta property="og:title" content="Material académico | Material de Ayudantía">
+  <meta property="og:description" content="Busca y filtra ayudantías, apuntes, ejercicios, controles, certámenes y presentaciones del curso de Macroeconomía, Universidad de Concepción, semestre 2026-2.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="material">
+  <a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="site-brand" href="index.html">
+        <strong>Material de Ayudantía</strong>
+        <span>Ignacio Garrido &amp; Alex Fierro</span>
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú de navegación">☰</button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Navegación principal">
+        <ul class="site-nav__links">
+          <li><a href="index.html" data-page-link="inicio">Inicio</a></li>
+          <li><a href="material.html" data-page-link="material">Material</a></li>
+          <li><a href="videos.html" data-page-link="videos">Videos</a></li>
+          <li><a href="about.html" data-page-link="about">Sobre el proyecto</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+          <span data-theme-icon aria-hidden="true">☀️</span>
+          <span data-theme-label>Claro</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section" style="padding-bottom: var(--space-4);">
+      <div class="container">
+        <h1>Material académico</h1>
+        <p class="hero__lede">Busca por título, tema o autor, filtra por categoría y ordena la biblioteca completa.</p>
+
+        <div class="library-controls">
+          <div class="search-field">
+            <label for="material-search">Buscar</label>
+            <input type="search" id="material-search" data-material-search placeholder="Título, tema, descripción o autor…">
+          </div>
+          <div class="sort-field">
+            <label for="material-sort">Ordenar por</label>
+            <select id="material-sort" data-material-sort>
+              <option value="recientes">Más recientes</option>
+              <option value="antiguos">Más antiguos</option>
+              <option value="az">A-Z</option>
+              <option value="za">Z-A</option>
+            </select>
+          </div>
+        </div>
+
+        <ul class="filter-list" data-material-filters aria-label="Filtrar por categoría"></ul>
+
+        <p class="results-count" data-results-count aria-live="polite"></p>
+
+        <div class="grid grid--cards" data-material-grid>
+          <div class="state-message">Cargando material…</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <p class="site-footer__brand">Material de Ayudantía</p>
+        <p class="site-footer__meta">Creado por <strong>Ignacio Garrido &amp; Alex Fierro</strong> para el curso de Macroeconomía (Universidad de Concepción, semestre 2026-2), <span data-current-year>2026</span>.</p>
+      </div>
+      <ul class="site-footer__links">
+        <li><a href="https://github.com/USUARIO/REPOSITORIO" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/PERFIL" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="mailto:correo@ejemplo.com">Correo</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/material.js"></script>
+</body>
+</html>
