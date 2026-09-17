@@ -49,13 +49,30 @@
   }
 
   function previewHTML(item) {
-    var pdf = item.files && item.files.pdf;
-    if (!pdf) return "";
+    var files = item.files || {};
+    var PREVIEWABLE = [
+      { key: "pdf", label: "Listado" },
+      { key: "pauta", label: "Pauta" },
+      { key: "ppt", label: "Presentación" }
+    ];
+
+    var blocks = PREVIEWABLE
+      .filter(function (entry) { return files[entry.key]; })
+      .map(function (entry) {
+        return (
+          "<h3>" + AyudantiaData.escapeHTML(entry.label) + "</h3>" +
+          '<embed src="' + AyudantiaData.escapeHTML(files[entry.key]) + '" type="application/pdf" title="Previsualización de ' +
+          AyudantiaData.escapeHTML(item.title) + " — " + AyudantiaData.escapeHTML(entry.label) + '">'
+        );
+      })
+      .join("");
+
+    if (!blocks) return "";
+
     return (
       '<div class="detail-preview">' +
       "<h2>Previsualización</h2>" +
-      '<embed src="' + AyudantiaData.escapeHTML(pdf) + '" type="application/pdf" title="Previsualización de ' +
-      AyudantiaData.escapeHTML(item.title) + '">' +
+      blocks +
       "</div>"
     );
   }
