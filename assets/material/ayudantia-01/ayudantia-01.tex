@@ -1,0 +1,369 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+\parindent = 0cm
+\setlist{itemsep=0.6em}
+
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,latexsym,cancel}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\LVert#1\RVert}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+
+% Márgenes limpios y compactos para todo el documento
+\usepackage[lmargin=2cm,rmargin=2cm,top=2cm,bottom=2.5cm]{geometry}
+\usepackage{xspace}
+
+% ======================================================================
+%  DEFINICIÓN DEL TÍTULO DEL TEMA
+% ======================================================================
+\newcommand{\titulotema}{Cuentas Nacionales y Mediciones Macroeconómicas}
+
+% ======================================================================
+%  CONFIGURACIÓN DE ENCABEZADOS Y PIES DE PÁGINA (fancyhdr)
+% ======================================================================
+\usepackage{fancyhdr}
+
+% --- Estilo general: desde la página 2 en adelante ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Macroeconomía (580323)}
+\fancyhead[R]{\titulotema}
+\renewcommand{\headrulewidth}{0.5pt} % Sin línea superior
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{Semestre 2026-2}
+\fancyfoot[L]{CMP/IGU/AFR}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% --- Estilo exclusivo de la Página 1 ---
+\fancypagestyle{primerapagina}{%
+  \fancyhf{}
+  \fancyhead[L]{\small FACULTAD DE INGENIERÍA\\DEPTO DE INGENIERÍA INDUSTRIAL \\ MACROECONOMÍA (580323)}
+  \fancyhead[R]{\includegraphics[scale=0.13]{escudoudec.jpg}}
+  \renewcommand{\headrulewidth}{0.9pt}
+  \fancyfoot[C]{\thepage}
+  \fancyfoot[R]{Semestre 2026-2}
+  \fancyfoot[L]{CMP/IGU/AFR}
+  \renewcommand{\footrulewidth}{0.5pt}
+}
+
+% Enlaces
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% Paquete de recuadros avanzados
+\usepackage[many]{tcolorbox}
+
+% ======================================================================
+%  DEFINICIÓN DEL RECUADRO CON BORDES REDONDEADOS Y BARRA AZUL
+% ======================================================================
+\definecolor{headblue}{RGB}{0, 15, 137}      
+\definecolor{frameblue}{RGB}{41, 98, 153}     
+\definecolor{bgsoftblue}{RGB}{247, 249, 253}  
+
+\newtcolorbox{solucion}[1][]{%
+    enhanced,
+    breakable,
+    colback=bgsoftblue,
+    colframe=frameblue!75!black,
+    colbacktitle=headblue,
+    coltitle=white,
+    fonttitle=\bfseries\normalsize,
+    title={Solución:\ifx&#1&\else\ \normalfont\small(#1)\fi},
+    arc=2.5mm,
+    boxrule=0.7pt,
+    titlerule=0pt,
+    toptitle=1.5mm,
+    bottomtitle=1.5mm,
+    left=4mm, right=4mm, top=3mm, bottom=3mm,
+    before skip=4mm,
+    after skip=4mm,
+    skin first=enhanced,
+    skin middle=enhanced,
+    skin last=enhanced,
+    arc=2.5mm,
+    bottomrule=0.7pt,
+    toprule=0.7pt
+}
+
+\newenvironment{solucionpartes}{%
+    \begin{enumerate}[label=\textbf{(\alph*)}, leftmargin=1.2cm, itemsep=0.5em]
+}{%
+    \end{enumerate}
+}
+
+\newcommand{\checkformula}[1]{\noindent\textbf{Chequeo de consistencia: } #1 \quad \checkmark}
+
+% ======================================================================
+%  COMANDOS PERSONALIZADOS
+% ======================================================================
+
+\newcounter{ejercicio}
+\newcommand{\ejercicio}[1][]{%
+  \stepcounter{ejercicio}%
+  \bigskip\noindent\textbf{Ejercicio \arabic{ejercicio}\ifx&#1&\relax.\else\ (#1).\fi}\ %
+}
+
+\newenvironment{partes}
+  {\begin{enumerate}[label=(\alph*), leftmargin=1.5cm]}
+  {\end{enumerate}}
+
+\newenvironment{tabladatos}
+  {\begin{center}}
+  {\end{center}}
+
+\newenvironment{recuadro}[1]{%
+  \noindent\colorbox{black!8}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \centering\Large\bfseries #1
+    }%
+  }\par\vspace{4mm}\noindent
+}{\par}
+
+\begin{document}
+\thispagestyle{primerapagina}
+
+\vspace*{0.05cm}
+
+\begin{center}
+  {\Large \textbf{Listado 1 -- Macroeconomía (580323)}}\\[0.15cm]
+  {\large \titulotema}
+\end{center}
+
+\bigskip
+
+\textbf{Profesor:} Cristian Mardones, Ph.D. \quad
+\textbf{Ayudantes:} Ignacio Garrido U y Alex Fierro R.
+
+\bigskip
+
+%=======================================================================
+% EJERCICIO 1 -- PIB vs. Ingreso Disponible
+%=======================================================================
+\ejercicio
+Señale las diferencias entre el VBP, el PIB, el PIN y el Ingreso Disponible ($Y_d$).
+
+
+
+%=======================================================================
+% EJERCICIO 2 -- Insumos y PIB
+%=======================================================================
+\ejercicio
+Diga por qué no se contabiliza dentro del PIB la compra y venta de \textit{insumos}.
+
+
+
+%=======================================================================
+% EJERCICIO 3 -- PIB nominal/real, deflactor, IPC e inflación (tabla)
+%=======================================================================
+\ejercicio[P, Certamen 2022]
+Considere la producción de un cierto país en donde se muestran sus respectivos bienes y precios de ellos en la tabla adjunta. Los bienes de los sectores \textbf{A y B} son vendidos a los hogares, los bienes del sector \textbf{C} son adquiridos por el gobierno, los bienes del sector \textbf{D} son exportados, mientras que los bienes del sector \textbf{E y F} son utilizados para fabricar los bienes \textbf{A, B, C y D}.
+
+\begin{tabladatos}
+\begin{tabular}{lcccccccccccc}
+\hline
+ & $P_A$ & $Q_A$ & $P_B$ & $Q_B$ & $P_C$ & $Q_C$ & $P_D$ & $Q_D$ & $P_E$ & $Q_E$ & $P_F$ & $Q_F$  \\
+\hline
+2020 & \$500 & 100 & \$10 & 2000 & \$100 & 80 & \$10 & 600 & \$100 & 700 & \$20 & 1000 \\
+2021 & \$540 & 120 & \$9 & 1800 & \$120 & 90 & \$15 & 500 & \$80 & 900 & \$30 & 1100 \\
+\hline
+\end{tabular}
+\end{tabladatos}
+
+\begin{partes}
+\item Determine el PIB nominal y real para cada año.
+\item Calcule la tasa de crecimiento del PIB real usando los precios del año 2020 como base.
+\item Calcule el deflactor del PIB.
+\item Calcule el Índice de Precios al Consumidor (IPC) para cada período considerando como canasta básica los bienes A y B.
+\item Con lo anterior, calcule la inflación por el método del deflactor y por el método del IPC.
+\end{partes}
+
+
+
+%=======================================================================
+% EJERCICIO 4 (Certamen 2015) -- Costo de vida: IPC vs. deflactor
+%=======================================================================
+\ejercicio[Certamen 2015]
+Explique si en una economía cerrada (sin exportaciones ni importaciones), en la cual las demandas por bienes y servicios finales son inelásticas al precio, el costo de vida medido por el IPC o por el deflactor del PIB deberían ser iguales.
+
+
+
+%=======================================================================
+% EJERCICIO 5 (Certamen 2013) -- IPC base 2010 e inflación 2011-2013
+%=======================================================================
+\ejercicio[Certamen 2013]
+En el país de los jóvenes se consumen solo cuatro artículos (Ron, Coca-Cola, Educación y PlayStation). En el año 2010 una familia representativa consumía 3 unidades de ron, 3 unidades de Coca-Cola, 2 unidades de educación y 1 unidad de PlayStation. Los precios (en \$) durante los últimos años son:
+
+\begin{tabladatos}
+\begin{tabular}{lcccc}
+\hline
+ & 2010 & 2011 & 2012 & 2013 \\
+\hline
+Ron & 400 & 350 & 450 & 500 \\
+Cocacola & 1000 & 1100 & 1100 & 1150 \\
+Educación & 600 & 800 & 1000 & 1020 \\
+PlayStation & 800 & 1200 & 1200 & 1300 \\
+\hline
+\end{tabular}
+\end{tabladatos}
+
+\medskip
+\noindent
+Calcule el IPC de cada año (base 2010 = 100). Luego calcule la \textbf{inflación} en 2011, 2012 y 2013.
+
+
+
+\newpage
+%=======================================================================
+% EJERCICIO 6 -- Cuentas nacionales: Lápices y Cuadernos
+%=======================================================================
+\ejercicio
+Suponga una economía donde solo se producen \textit{lápices} y \textit{cuadernos}.
+
+\begin{center}
+\begin{tabular}{ccccc}
+\hline\hline
+\textbf{Año} & \multicolumn{2}{c}{\textbf{Lápices}} & \multicolumn{2}{c}{\textbf{Cuadernos}} \\
+\cline{2-3} \cline{4-5}
+ & Precio & Cantidad & Precio & Cantidad \\
+\hline
+2017 & 100 & 100 & 200 & 50 \\
+2018 & 200 & 150 & 300 & 100 \\
+2019 & 300 & 200 & 400 & 150 \\
+\hline\hline
+\end{tabular}
+\end{center}
+
+\begin{partes}
+  \item Calcule el PIB nominal 2017--2019.
+  \item Calcule el PIB real (base 2017).
+  \item Calcule el deflactor del PIB.
+  \item Calcule el IPC (base 2017) con canasta \{lápices, cuadernos\}.
+  \item Calcule la inflación (2017--2019) por deflactor e IPC.
+\end{partes}
+
+
+%=======================================================================
+% EJERCICIO 7 (Certamen 1 2023) -- Isla tropical
+%=======================================================================
+\ejercicio[P, Certamen 1 2023]
+Considere un país (isla tropical) que produce solamente tres bienes: alimentos, vestuario y energía.
+
+\begin{center}
+\begin{tabular}{lcc}
+\hline\hline
+\textbf{Bien} & \textbf{Precio} & \textbf{Cantidad} \\
+\hline
+Alimentos & \$25 & 100 \\
+Vestuario & \$40 & 50  \\
+Energía   & \$10 & 150 \\
+\hline\hline
+\end{tabular}
+\end{center}
+
+La mitad de la producción de alimentos se consume internamente y la otra mitad se exporta a un precio internacional de US\$ 1,25. Todo el vestuario se consume internamente. Un tercio de la producción de energía que proviene de fuentes renovables se vende como insumo a las firmas de alimentos, otro tercio se vende como insumo a las firmas de vestuario y el resto lo consumen los hogares. Este país importa 10 unidades de vestuario de marcas internacionales a un precio de US\$ 1,5. El tipo de cambio en el país es \$20 CLP por dólar (US\$). Además, se describe el uso de bienes como insumos y comercio internacional.
+
+Calcule:
+
+\begin{partes}
+  \item Valor bruto de la producción, PIB del país, valor del consumo y valor de las exportaciones netas en moneda nacional.
+\end{partes}
+
+
+
+%=======================================================================
+% EJERCICIO -- Tasa de interés real y nominal: Condorito pide un préstamo
+%=======================================================================
+\ejercicio[P]
+Condorito necesita financiar la fiesta de cumpleaños de Coné y le pide un préstamo a Pepe Cortisona a un año plazo. Ambos negocian la tasa mirando la inflación \textit{esperada} para el año, pero la inflación efectiva termina siendo distinta. Pepe Cortisona presta a una tasa de interés nominal $i = 9\%$ anual. Al momento de firmar el contrato, ambos esperan una inflación $\pi^e = 4\%$ para el año. Al final del año, la inflación efectiva resultó ser $\pi = 7\%$.
+
+\begin{partes}
+  \item Calcule la tasa de interés real \textit{esperada} al momento de firmar el contrato, usando la ecuación de Fisher exacta y también la aproximación $r \approx i - \pi^e$.
+  \item Calcule la tasa de interés real efectiva, una vez conocida la inflación efectiva de $7\%$, con ambas fórmulas.
+
+  \item La inflación efectiva resultó mayor que la esperada. ¿Quién gana y quién pierde con esta sorpresa inflacionaria: Condorito (deudor) o Pepe Cortisona (acreedor)? Explique en términos de poder adquisitivo.
+  \item Suponga ahora que la economía de Chile enfrenta un episodio de \textit{deflación} inesperada ($\pi < 0$, menor a lo que esperaban ambas partes). ¿Cambia su respuesta de la parte (c)? ¿Quién preferiría, en general, tener deudas a tasa fija cuando se anticipa que la inflación sorprenderá al alza: un deudor o un acreedor?
+\end{partes}
+
+
+
+%=======================================================================
+% EJERCICIO 9 -- PIB nominal y real: la economía de Fondo de Bikini
+%=======================================================================
+\ejercicio
+Fondo de Bikini es una pequeña economía cerrada que produce solo dos bienes: hamburguesas Cangreburger (del local de Don Cangrejo) y burbujas de jabón (producidas por Bob Esponja y Patricio de forma artesanal). El Banco Central de Fondo de Bikini les pide estimar el desempeño de la economía entre 2024 y 2026.
+
+\begin{tabladatos}
+\begin{tabular}{lcccccc}
+\hline\hline
+\multirow{2}{*}{\textbf{Bien}} & \multicolumn{2}{c}{\textbf{2024 (año base)}} & \multicolumn{2}{c}{\textbf{2025}} & \multicolumn{2}{c}{\textbf{2026}} \\
+\cline{2-3} \cline{4-5} \cline{6-7}
+ & Precio & Cantidad & Precio & Cantidad & Precio & Cantidad \\
+\hline
+Cangreburger (unid.) & \$2.200 & 10.000 & \$2.000 & 11.000 & \$2.500 & 11.500 \\
+Burbujas de jabón (unid.) & \$500 & 19.000 & \$550 & 20.000 & \$600 & 21.000 \\
+\hline\hline
+\end{tabular}
+\end{tabladatos}
+
+\begin{partes}
+  \item Calcule el PIB nominal de Fondo de Bikini para 2024, 2025 y 2026.
+  \item Calcule el PIB real de cada año usando 2024 como año base.
+  \item Calcule el deflactor del PIB de 2025 y 2026, y la tasa de inflación implícita en el deflactor entre esos años.
+  \item Calcule la tasa de crecimiento del PIB real entre 2024--2025 y 2025--2026.
+  \item ¿Qué explica la brecha creciente entre el PIB nominal y el PIB real de Fondo de Bikini? ¿Qué mide realmente cada uno?
+  \item Plankton abre finalmente el Balde de Sebo y logra vender 3.000 hamburguesas Chum a \$1.800 cada una en 2026, sin afectar las ventas de Don Cangrejo. ¿Cómo cambia el PIB nominal de 2026? ¿Y el PIB real? Justifique sin recalcular todo el ejercicio.
+\end{partes}
+
+
+
+
+
+%=======================================================================
+% EJERCICIO 2 -- Inflación: Tulio Triviño investiga el alza de precios
+%=======================================================================
+\ejercicio[P]
+En el noticiario de 31 Minutos, Tulio Triviño quiere preparar un reportaje sobre el costo de la vida. Para eso arma una canasta fija representativa de un hogar y compara su costo entre 2025 (año base) y 2026.
+
+\begin{tabladatos}
+\begin{tabular}{lccc}
+\hline\hline
+\textbf{Bien} & \textbf{Cantidad fija} & \textbf{Precio 2025} & \textbf{Precio 2026} \\
+\hline
+Pan (kg/mes) & 20 & \$1.200 & \$1.350 \\
+Bencina (litros/mes) & 15 & \$950 & \$1.050 \\
+Entrada al cine (unid./mes) & 2 & \$5.000 & \$5.500 \\
+\hline\hline
+\end{tabular}
+\end{tabladatos}
+
+\begin{partes}
+  \item Calcule el costo de la canasta en 2025 y en 2026.
+  \item Calcule el IPC de 2026 con base $2025=100$.
+  \item Calcule la tasa de inflación entre 2025 y 2026.
+  \item Represente en un gráfico de barras el peso relativo (participación en el gasto total) de cada uno de los tres bienes en la canasta de 2025.
+  \item El IPC usa una canasta fija. Si el precio de la bencina sube mucho más que el del pan, ¿qué le pasará probablemente al consumo real de bencina de los hogares, y por qué el IPC tiende entonces a sobreestimar el verdadero aumento del costo de vida? (este problema se conoce como sesgo de sustitución).
+  \item Un sindicato negocia reajustes salariales indexados a la variación del IPC. Si su sueldo nominal sube exactamente en el mismo porcentaje que calculó en (c), ¿qué pasa con su sueldo real? ¿Cambiaría su respuesta si su patrón de consumo se parece poco a la canasta del INE?
+\end{partes}
+
+
+
+
+
+
+
+
+
+\end{document}

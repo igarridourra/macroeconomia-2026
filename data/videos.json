@@ -1,18 +1,194 @@
 [
   {
-    "id": "video-ejemplo-01",
-    "title": "[Ejemplo] Clase 01 — Introducción a la Macroeconomía",
-    "professor": "Nombre del profesor",
-    "topic": "Introducción",
-    "description": "Entrada de ejemplo. Reemplázala por el video real de la clase, editando data/videos.json.",
-    "youtube": "https://www.youtube.com/watch?v=VIDEO_ID"
+    "id": "clase-01",
+    "title": "Clase 1 (Macroeconomía)",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 1 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/w8SBNSQ9FNk"
   },
   {
-    "id": "video-ejemplo-02",
-    "title": "[Ejemplo] Clase 02 — Inflación y desempleo",
-    "professor": "Nombre del profesor",
-    "topic": "Inflación y desempleo",
-    "description": "Entrada de ejemplo. Reemplázala por el video real de la clase, editando data/videos.json.",
-    "youtube": "https://www.youtube.com/watch?v=VIDEO_ID"
+    "id": "clase-02",
+    "title": "Clase 2",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 2 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/NRGvORQWdBc"
+  },
+  {
+    "id": "clase-03",
+    "title": "Clase 3",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 3 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/YhhIkRo9ouw"
+  },
+  {
+    "id": "clase-04",
+    "title": "Clase 4",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 4 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/lBQlUwgatm4"
+  },
+  {
+    "id": "clase-05",
+    "title": "Clase 5",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 5 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/zM14rcVNt6E"
+  },
+  {
+    "id": "clase-06",
+    "title": "Clase 6",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 6 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/5S03zkASm5k"
+  },
+  {
+    "id": "clase-07",
+    "title": "Clase 7",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 7 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/Y2qvMsElFwc"
+  },
+  {
+    "id": "clase-08",
+    "title": "Clase 8",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 8 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/ibIxByAH7Oc"
+  },
+  {
+    "id": "clase-09",
+    "title": "Clase 9",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 9 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/-jSxPlKx8AA"
+  },
+  {
+    "id": "clase-10",
+    "title": "Clase 10",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 10 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/YsjvxnVhLqg"
+  },
+  {
+    "id": "clase-11",
+    "title": "Clase 11",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 11 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/53JN2yiI7X0"
+  },
+  {
+    "id": "clase-12",
+    "title": "Clase 12",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 12 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/Ypp0-X1wQv0"
+  },
+  {
+    "id": "clase-13",
+    "title": "Clase 13",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 13 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/6_YTqEuW0fQ"
+  },
+  {
+    "id": "clase-14",
+    "title": "Clase 14",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Cátedra de Macroeconomía",
+    "description": "Clase 14 de cátedra, grabada por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/9qPow5yXGAA"
+  },
+  {
+    "id": "ejercicio-adicional-01",
+    "title": "Ejercicio adicional 1",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Ejercicios adicionales",
+    "description": "Ejercicio adicional 1 resuelto en clase por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/EVMWeb6xb3Y"
+  },
+  {
+    "id": "ejercicio-adicional-02",
+    "title": "Ejercicio adicional 2",
+    "professor": "Cristian Mardones, Ph.D.",
+    "topic": "Ejercicios adicionales",
+    "description": "Ejercicio adicional 2 resuelto en clase por el profesor Cristian Mardones, Ph.D.",
+    "youtube": "https://youtu.be/WiJdjfDr9eg"
+  },
+  {
+    "id": "pablo-ayudantia-01-conceptos",
+    "title": "Ayudantía 1 — Conceptos",
+    "professor": "Pablo Meza (Ayudante, ex alumno DII)",
+    "topic": "Ayudantía — Macroeconomía",
+    "description": "Ayudantía 1 — Conceptos grabada por el ayudante Pablo Meza.",
+    "youtube": "https://youtu.be/2seyioBtqUo?list=PLX_2szLpT_TxKlnt_r1XSWb3htxWMs8T8"
+  },
+  {
+    "id": "pablo-ayudantia-01-ejercicios",
+    "title": "Ayudantía 1 — Ejercicios",
+    "professor": "Pablo Meza (Ayudante, ex alumno DII)",
+    "topic": "Ayudantía — Macroeconomía",
+    "description": "Ayudantía 1 — Ejercicios grabada por el ayudante Pablo Meza.",
+    "youtube": "https://youtu.be/6hBBFvAM-Yc?list=PLX_2szLpT_TxKlnt_r1XSWb3htxWMs8T8"
+  },
+  {
+    "id": "pablo-ayudantia-02",
+    "title": "Ayudantía 2",
+    "professor": "Pablo Meza (Ayudante, ex alumno DII)",
+    "topic": "Ayudantía — Macroeconomía",
+    "description": "Ayudantía 2 grabada por el ayudante Pablo Meza.",
+    "youtube": "https://youtu.be/OyM0LHU1eMg?list=PLX_2szLpT_TxKlnt_r1XSWb3htxWMs8T8"
+  },
+  {
+    "id": "pablo-ayudantia-03",
+    "title": "Ayudantía 3",
+    "professor": "Pablo Meza (Ayudante, ex alumno DII)",
+    "topic": "Ayudantía — Macroeconomía",
+    "description": "Ayudantía 3 grabada por el ayudante Pablo Meza.",
+    "youtube": "https://youtu.be/IjR0Erc3z0U?list=PLX_2szLpT_TxKlnt_r1XSWb3htxWMs8T8"
+  },
+  {
+    "id": "pablo-ayudantia-04",
+    "title": "Ayudantía 4",
+    "professor": "Pablo Meza (Ayudante, ex alumno DII)",
+    "topic": "Ayudantía — Macroeconomía",
+    "description": "Ayudantía 4 grabada por el ayudante Pablo Meza.",
+    "youtube": "https://youtu.be/WD7gBOKFeDc?list=PLX_2szLpT_TxKlnt_r1XSWb3htxWMs8T8"
+  },
+  {
+    "id": "pablo-ayudantia-05",
+    "title": "Ayudantía 5",
+    "professor": "Pablo Meza (Ayudante, ex alumno DII)",
+    "topic": "Ayudantía — Macroeconomía",
+    "description": "Ayudantía 5 grabada por el ayudante Pablo Meza.",
+    "youtube": "https://youtu.be/evSwEPewQt4?list=PLX_2szLpT_TxKlnt_r1XSWb3htxWMs8T8"
+  },
+  {
+    "id": "pablo-ayudantia-06",
+    "title": "Ayudantía 6",
+    "professor": "Pablo Meza (Ayudante, ex alumno DII)",
+    "topic": "Ayudantía — Macroeconomía",
+    "description": "Ayudantía 6 grabada por el ayudante Pablo Meza.",
+    "youtube": "https://youtu.be/-eTYxPn6D4E?list=PLX_2szLpT_TxKlnt_r1XSWb3htxWMs8T8"
+  },
+  {
+    "id": "pablo-ayudantia-07",
+    "title": "Ayudantía 7",
+    "professor": "Pablo Meza (Ayudante, ex alumno DII)",
+    "topic": "Ayudantía — Macroeconomía",
+    "description": "Ayudantía 7 grabada por el ayudante Pablo Meza.",
+    "youtube": "https://youtu.be/uv1bjeYXSLs?list=PLX_2szLpT_TxKlnt_r1XSWb3htxWMs8T8"
   }
 ]

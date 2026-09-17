@@ -1,0 +1,357 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+\parindent = 0cm
+\setlist{itemsep=0.6em}
+
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,latexsym,cancel}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\LVert#1\RVert}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+
+% Márgenes limpios y compactos para todo el documento
+\usepackage[lmargin=2cm,rmargin=2cm,top=2cm,bottom=2.5cm]{geometry}
+\usepackage{xspace}
+
+% ======================================================================
+%  DEFINICIÓN DEL TÍTULO DEL TEMA
+% ======================================================================
+\newcommand{\titulotema}{Cuentas Nacionales y Mediciones Macroeconómicas II}
+
+% ======================================================================
+%  CONFIGURACIÓN DE ENCABEZADOS Y PIES DE PÁGINA (fancyhdr)
+% ======================================================================
+\usepackage{fancyhdr}
+
+% --- Estilo general: desde la página 2 en adelante ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Macroeconomía (580323)}
+\fancyhead[R]{\titulotema}
+\renewcommand{\headrulewidth}{0.5pt} % Sin línea superior
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{Semestre 2026-2}
+\fancyfoot[L]{CMP/IGU/AFR}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% --- Estilo exclusivo de la Página 1 ---
+\fancypagestyle{primerapagina}{%
+  \fancyhf{}
+  \fancyhead[L]{\small FACULTAD DE INGENIERÍA\\DEPTO DE INGENIERÍA INDUSTRIAL \\ MACROECONOMÍA (580323)}
+  \fancyhead[R]{\includegraphics[scale=0.13]{escudoudec.jpg}}
+  \renewcommand{\headrulewidth}{0.9pt}
+  \fancyfoot[C]{\thepage}
+  \fancyfoot[R]{Semestre 2026-2}
+  \fancyfoot[L]{CMP/IGU/AFR}
+  \renewcommand{\footrulewidth}{0.5pt}
+}
+
+% Enlaces
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% Paquete de recuadros avanzados
+\usepackage[many]{tcolorbox}
+
+% ======================================================================
+%  DEFINICIÓN DEL RECUADRO CON BORDES REDONDEADOS Y BARRA AZUL
+% ======================================================================
+\definecolor{headblue}{RGB}{0, 15, 137}      
+\definecolor{frameblue}{RGB}{41, 98, 153}     
+\definecolor{bgsoftblue}{RGB}{247, 249, 253}  
+
+\newtcolorbox{solucion}[1][]{%
+    enhanced,
+    breakable,
+    colback=bgsoftblue,
+    colframe=frameblue!75!black,
+    colbacktitle=headblue,
+    coltitle=white,
+    fonttitle=\bfseries\normalsize,
+    title={Solución:\ifx&#1&\else\ \normalfont\small(#1)\fi},
+    arc=2.5mm,
+    boxrule=0.7pt,
+    titlerule=0pt,
+    toptitle=1.5mm,
+    bottomtitle=1.5mm,
+    left=4mm, right=4mm, top=3mm, bottom=3mm,
+    before skip=4mm,
+    after skip=4mm,
+    skin first=enhanced,
+    skin middle=enhanced,
+    skin last=enhanced,
+    arc=2.5mm,
+    bottomrule=0.7pt,
+    toprule=0.7pt
+}
+
+\newenvironment{solucionpartes}{%
+    \begin{enumerate}[label=\textbf{(\alph*)}, leftmargin=1.2cm, itemsep=0.5em]
+}{%
+    \end{enumerate}
+}
+
+\newcommand{\checkformula}[1]{\noindent\textbf{Chequeo de consistencia: } #1 \quad \checkmark}
+
+% ======================================================================
+%  COMANDOS PERSONALIZADOS
+% ======================================================================
+
+\newcounter{ejercicio}
+\newcommand{\ejercicio}[1][]{%
+  \stepcounter{ejercicio}%
+  \bigskip\noindent\textbf{Ejercicio \arabic{ejercicio}\ifx&#1&\relax.\else\ (#1).\fi}\ %
+}
+
+\newenvironment{partes}
+  {\begin{enumerate}[label=(\alph*), leftmargin=1.5cm]}
+  {\end{enumerate}}
+
+\newenvironment{tabladatos}
+  {\begin{center}}
+  {\end{center}}
+
+\newenvironment{recuadro}[1]{%
+  \noindent\colorbox{black!8}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \centering\Large\bfseries #1
+    }%
+  }\par\vspace{4mm}\noindent
+}{\par}
+
+\begin{document}
+\thispagestyle{primerapagina}
+
+\vspace*{0.05cm}
+
+\begin{center}
+  {\Large \textbf{Listado 2 -- Macroeconomía (580323)}}\\[0.15cm]
+  {\large \titulotema}
+\end{center}
+
+\bigskip
+
+\textbf{Profesor:} Cristian Mardones, Ph.D. \quad
+\textbf{Ayudantes:} Ignacio Garrido U y Alex Fierro R.
+
+\bigskip
+
+%=======================================================================
+% EJERCICIO 1 (Certamen 2013) -- Cuentas Nacionales
+%=======================================================================
+\ejercicio[Certamen 2013]
+Los datos siguientes corresponden a información de cuentas nacionales (en miles):
+
+\begin{tabladatos}
+$\text{PIB} = 60{,}000,\quad \text{Inversión Bruta} = 12{,}000,\quad \text{Inversión Neta} = 9{,}000,$\\[0.2em]
+$\text{Consumo} = 33{,}000,\quad \text{Gasto del Gobierno} = 14{,}500,\quad \text{Superávit Fiscal} = 500.$
+\end{tabladatos}
+
+\noindent
+Calcule el \textbf{Producto Interno Neto}, las \textbf{Exportaciones Netas}, los \textbf{impuestos menos transferencias}, el \textbf{ingreso personal disponible} y el \textbf{ahorro}.
+
+
+
+%=======================================================================
+% EJERCICIO 2 (Examen 2021) -- Contabilidad Nacional: pares de transacciones
+%=======================================================================
+\ejercicio[P, Examen 2021]
+Mencione cuál es la diferencia desde el punto de vista de la contabilidad nacional para las dos transacciones económicas de cada enunciado:
+
+\begin{partes}
+  \item Una empresa que compra combustible para que sus vendedores realicen reparto en camioneta y una empresa que le paga a sus vendedores un bono de monto equivalente para que ellos mismos compren el combustible.
+  \item Usted decide comprar un pisco peruano en vez de un pisco chileno.
+  \item Un hospital público que compra una jeringa y una familia que compra ese mismo tipo de jeringa en una farmacia.
+\end{partes}
+
+
+
+%=======================================================================
+% EJERCICIO 3 (Certamen 2013) -- Identidad Ahorro-Inversión y Déficit Fiscal
+%=======================================================================
+\ejercicio[P, Certamen 2013]
+A partir de la definición de producto igual a la demanda agregada, demuestre la relación entre ahorro externo, ahorro del gobierno y ahorro privado. Si el gobierno incurre en un déficit fiscal y el ahorro privado es menor que la inversión, ¿qué implicancia tiene esto sobre las exportaciones netas?
+
+
+
+%=======================================================================
+% EJERCICIO 4 (Certamen 2024) -- Modelo Macroeconómico de Producción y Cuentas
+%=======================================================================
+\ejercicio[Certamen 2024]
+Suponga que la economía de un país se puede representar por las siguientes ecuaciones:
+\begin{tabladatos}
+$Y = 15K^{0,5}L^{0,5}, \quad K = 2500, \quad L = 400$\\[0.4em]
+$C = 250 + 0,6Y_D, \quad T = 0,1Y, \quad TR = 1000, \quad G = 1600, \quad XN = 400$
+\end{tabladatos}
+
+\noindent
+Determine:
+
+\begin{partes}
+  \item PIB, Ingreso Disponible, Ahorro Privado, Ahorro del Gobierno e Inversión.
+\end{partes}
+
+
+
+\newpage
+
+
+
+
+%=======================================================================
+% EJERCICIO 6 -- PIB vs. PNB y críticas a la medición del PIB (teórico)
+%=======================================================================
+\ejercicio[P]
+El Banco Central de un país anuncia con orgullo que el PIB creció un 4\% este año. Un periodista de El Mercurio (cuerpo EyN) le pide a usted, como asesor económico, que comente la noticia.
+
+\begin{partes}
+  \item Explique la diferencia conceptual entre el \textbf{Producto Interno Bruto (PIB)} y el \textbf{Producto Nacional Bruto (PNB)}. Dé un ejemplo de una actividad productiva en Chile en la cual ambas medidas puedan diferir de forma relevante.
+  \item Un estudio para Chile (Mardones \& del Río, 2019) muestra que el PIB se reduciría en 11,3\% si se descontaran los daños ambientales asociados a la minería del cobre. ¿Cuál de las tres principales críticas a la medición del PIB revisadas en clases ilustra mejor este resultado? Explique brevemente en qué consiste dicha crítica.
+  \item Nombre y explique brevemente \textbf{otra} de las críticas a la medición del PIB vistas en clases (distinta a la de la parte anterior), dando un ejemplo distinto al de la minería.
+  \item Si el PIB de un país crece 4\% pero, al mismo tiempo, aumenta fuertemente el trabajo doméstico no remunerado y el empleo informal no registrado, ¿el bienestar de la población necesariamente creció en la misma magnitud que el PIB? Justifique.
+\end{partes}
+
+
+
+%=======================================================================
+% EJERCICIO 7 -- PIB real: año base fijo vs. índices de volumen encadenados
+%=======================================================================
+\ejercicio[P]
+Una economía produce solamente dos bienes: computadores y bicicletas. Las cantidades producidas y sus precios entre 2024 y 2026 se muestran en la tabla:
+
+\begin{tabladatos}
+\begin{tabular}{lcccccc}
+\hline\hline
+\multirow{2}{*}{\textbf{Bien}} & \multicolumn{2}{c}{\textbf{2024}} & \multicolumn{2}{c}{\textbf{2025}} & \multicolumn{2}{c}{\textbf{2026}} \\
+\cline{2-3} \cline{4-5} \cline{6-7}
+ & Precio & Cantidad & Precio & Cantidad & Precio & Cantidad \\
+\hline
+Computadores (unid.) & \$1.000 & 50 & \$900 & 70 & \$850 & 90 \\
+Bicicletas (unid.) & \$200 & 300 & \$220 & 280 & \$240 & 260 \\
+\hline\hline
+\end{tabular}
+\end{tabladatos}
+
+\begin{partes}
+  \item Calcule el PIB nominal para 2024, 2025 y 2026.
+  \item Calcule el PIB real de cada año utilizando \textbf{2024 como año base fijo}, y la tasa de crecimiento real 2024--2025 y 2025--2026 con este método.
+  \item Calcule ahora el PIB real mediante un \textbf{índice de volumen encadenado}: para cada tramo, valorice el crecimiento usando los precios del año inicial de ese mismo tramo (2024 para el tramo 2024--2025, y 2025 para el tramo 2025--2026), y luego encadene ambas tasas de crecimiento a partir del PIB nominal de 2024.
+  \item Compare el nivel del PIB real de 2026 obtenido en (b) y en (c). ¿Por qué difieren, si ambos parten del mismo año base? Relacione su respuesta con el cambio en los precios relativos de computadores y bicicletas entre 2024 y 2026.
+  \item ¿Por qué la literatura recomienda actualmente el uso de índices de volumen encadenados por sobre un año base fijo y lejano en el tiempo?
+\end{partes}
+
+
+\newpage
+%=======================================================================
+% EJERCICIO 8 -- Comercio exterior y tipo de cambio: Viña El Boldo
+%=======================================================================
+\ejercicio
+La Viña El Boldo es la única productora de vino de una pequeña economía abierta. Durante el año produjo 400.000 litros de vino, vendidos en el mercado interno a un precio de \$2.800 por litro. De esa producción, 250.000 litros se destinan al consumo de los hogares del país, y los 150.000 litros restantes se exportan a un precio internacional de US\$4,20 por litro.
+
+Para elaborar el vino, la viña importa barricas de roble francés como insumo del proceso productivo: 500 barricas a US\$300 cada una. Además, la economía importa 20 tractores agrícolas a US\$25.000 cada uno, los cuales se destinan íntegramente a inversión del sector. El tipo de cambio vigente es de \$950 CLP por dólar.
+
+Exprese todos sus resultados en pesos chilenos (CLP) y determine:
+
+\begin{partes}
+  \item El \textbf{valor bruto de la producción (VBP)} de vino.
+  \item El valor de las importaciones de \textbf{insumos} (barricas) y, descontando dicho valor, el \textbf{Producto Interno Bruto (PIB)} generado por la viña.
+  \item El valor del \textbf{consumo} de los hogares y el valor de las \textbf{exportaciones}.
+  \item El valor de la \textbf{inversión} asociada a la importación de tractores y las \textbf{exportaciones netas (XN)} del período.
+  \item Suponga que, en lugar de dejar flotar su moneda, el Banco Central de este país decide fijar el tipo de cambio en \$900 CLP por dólar y comprometerse a comprar y vender divisas a ese precio sin límite. ¿Qué régimen cambiario estaría adoptando el país? Mencione un ejemplo real de un país que haya adoptado un esquema similar (o uno aún más extremo) y explique brevemente en qué consiste.
+\end{partes}
+
+
+
+
+%=======================================================================
+% EJERCICIO 9 (Certamen 2025) -- Contabilidad del Crecimiento y Productividad Total de Factores
+%=======================================================================
+\ejercicio[P, Certamen 2025]
+Suponga que la producción final de la economía se puede caracterizar por la siguiente función de producción:
+
+\[
+Y_t = A_t K_t^{0,6} L_t^{0,4}
+\]
+
+\noindent
+A partir de la ecuación previa, obtenga paso a paso una fórmula para determinar la \textbf{tasa de crecimiento de la productividad total de factores}. Luego, use los siguientes datos para calcular la evolución de la productividad total de factores a través del tiempo:
+
+\begin{tabladatos}
+\begin{tabular}{cccc}
+\hline\hline
+\textbf{Período} & \textbf{Crec. PIB (\%)} & \textbf{Crec. Capital (\%)} & \textbf{Crec. Trabajo (\%)} \\
+\hline
+2001--2005 & 3,50 & 2,00 & 1,00 \\
+2006--2010 & 2,80 & 1,80 & 0,80 \\
+2011--2015 & 2,50 & 2,00 & 0,60 \\
+2016--2020 & 2,40 & 2,20 & 0,50 \\
+2021--2025 & 2,20 & 2,00 & 1,00 \\
+\hline\hline
+\end{tabular}
+\end{tabladatos}
+
+
+
+%=======================================================================
+% EJERCICIO 10 -- Del crecimiento del PIB al bienestar por persona
+%  (continuación creativa del Ejercicio 9: PTF + PIB per cápita)
+%=======================================================================
+\ejercicio
+El PIB total puede crecer por más razones que el simple aumento de la productividad: también puede crecer porque hay más trabajadores, o porque la población crece más rápido o más lento que el empleo. Para separar estos efectos, continuemos con la economía del \textbf{Ejercicio 8}, cuya función de producción es
+\[
+Y_t = A_t K_t^{0,6} L_t^{0,4}.
+\]
+
+\noindent
+Defina el \textbf{capital por trabajador} $k_t = K_t/L_t$ y la \textbf{razón empleo-población} $e_t = L_t/N_t$, donde $N_t$ es la población total del país. Denote la tasa de crecimiento porcentual de una variable $X$ como $\hat{X}$ (por ejemplo, $\hat{Y}$ es el crecimiento porcentual del PIB).
+
+\begin{partes}
+  \item Demuestre que el \textbf{PIB per cápita}, $y_t = Y_t/N_t$, puede escribirse como
+  \[
+  y_t = A_t\, k_t^{0,6}\, e_t.
+  \]
+  \emph{Ayuda:} reemplace $K_t = k_t L_t$ dentro de la función de producción antes de dividir por $N_t$.
+
+  \item A partir del resultado anterior, demuestre que la tasa de crecimiento del PIB per cápita satisface
+  \[
+  \hat{y} \;=\; \hat{A} \;+\; 0{,}6\cdot\hat{k} \;+\; \hat{e}.
+  \]
+  Interprete económicamente cada uno de los tres términos del lado derecho: ¿qué tipo de fenómeno económico representa cada uno (piense en productividad, ahorro/inversión, y demografía)?
+
+  \item Usando los valores de la tabla que ya calculó en el \textbf{Ejercicio 8}, y los siguientes datos adicionales de crecimiento poblacional, complete para cada período los valores de $\hat{k}$ (crecimiento del capital por trabajador), $\hat{e}$ (crecimiento de la razón empleo-población) y $\hat{y}$ (crecimiento del PIB per cápita):
+
+  \begin{tabladatos}
+  \begin{tabular}{ccccc}
+  \hline\hline
+  \textbf{Período} & \textbf{Crec. Población (\%)} & \textbf{$\hat{k}$} & \textbf{$\hat{e}$} & \textbf{$\hat{y}$} \\
+  \hline
+  2001--2005 & 1,30 & & & \\
+  2006--2010 & 1,10 & & & \\
+  2011--2015 & 1,00 & & & \\
+  2016--2020 & 0,90 & & & \\
+  2021--2025 & 0,60 & & & \\
+  \hline\hline
+  \end{tabular}
+  \end{tabladatos}
+
+  \item Verifique que sus resultados de $\hat{y}$ en (c) coinciden con calcular directamente $\hat{y} = \hat{Y} - \hat{N}$ usando los datos de crecimiento del PIB del Ejercicio 8. ¿Por qué esta igualdad \textbf{debe} cumplirse siempre, independientemente de los valores numéricos?
+
+  \item ¿En cuál de los cinco períodos el crecimiento del PIB per cápita fue más ``sano'', en el sentido de estar impulsado principalmente por la productividad (PTF) y no por la acumulación de capital ni por factores demográficos? Justifique con los datos de su tabla.
+
+  \item Suponga que, manteniendo todo lo demás constante, la tasa de crecimiento poblacional de 2021--2025 hubiese sido de 1,30\% en vez de 0,60\% (por ejemplo, por mayor inmigración neta sin que esos nuevos habitantes se incorporaran de inmediato a la fuerza laboral). Sin recalcular todo, explique qué le ocurriría a $\hat{e}$ y a $\hat{y}$ de ese período, y por qué.
+\end{partes}
+
+\end{document}
