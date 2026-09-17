@@ -9,6 +9,9 @@
 
   var FORMAT_ACTIONS = {
     pdf: [{ label: "Ver PDF", primary: true }, { label: "Descargar PDF", primary: false }],
+    ppt: [{ label: "Ver presentación", primary: true }, { label: "Descargar presentación", primary: false }],
+    pauta: [{ label: "Ver pauta", primary: true }, { label: "Descargar pauta", primary: false }],
+    listado: [{ label: "Ver listado", primary: true }, { label: "Descargar listado", primary: false }],
     latex: [{ label: "Descargar LaTeX", primary: false }],
     source: [{ label: "Descargar archivos fuente", primary: false }],
     pptx: [{ label: "Descargar presentación", primary: false }],
