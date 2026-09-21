@@ -9,7 +9,6 @@
     "topics": ["Macroeconomía", "Introducción"],
     "files": {
       "listado": "assets/material/ayudantia-01/ayudantia-01.pdf",
-      "pauta": "assets/material/ayudantia-01/PAUTA-ayudantia-01.pdf",
       "ppt": "assets/material/ayudantia-01/PPT-ayudantia-01.pdf",
       "latex": "assets/material/ayudantia-01/ayudantia-01.tex"
     }
@@ -24,7 +23,6 @@
     "topics": ["Cuentas Nacionales", "PIB", "Componentes"],
     "files": {
       "listado": "assets/material/ayudantia-02/ayudantia-02.pdf",
-      "pauta": "assets/material/ayudantia-02/PAUTA-ayudantia-02.pdf",
       "ppt": "assets/material/ayudantia-02/PPT-ayudantia-02.pdf",
       "latex": "assets/material/ayudantia-02/ayudantia-02.tex"
     }
