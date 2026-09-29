@@ -56,5 +56,18 @@
       "listado": "assets/material/ayudantia-04/ayudantia-04.pdf",
       "latex": "assets/material/ayudantia-04/ayudantia-04.tex"
     }
+  },
+  {
+    "id": "Certamenes-C1",
+    "title": "Compilados Certamen 1",
+    "description": "Compilado C1 desde 2021 aprox.",
+    "category": "Certámenes",
+    "date": "2026-10-01",
+    "authors": ["Ignacio Garrido", "Alex Fierro"],
+    "topics": ["Cuentas Nacionales", "PIB", "Componentes", "Mercado Laboral", "Modelo OA-DA"],
+    "files": {
+      "listado": "assets/material/certamenes-c1/Compilados-Certamen-1.pdf",
+      "latex": "assets/material/certamenes-c1/Compilados-Certamen-1.tex"
+    }
   }
 ]

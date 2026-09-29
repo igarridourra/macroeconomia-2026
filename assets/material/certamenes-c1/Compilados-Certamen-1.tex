@@ -1,0 +1,351 @@
+\documentclass[11pt,addpoints]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage[lmargin=2cm,rmargin=2cm,top=2cm,bottom=2.5cm]{geometry}
+\usepackage{xspace}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb} % <-- por fórmulas
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=cyan}
+\parindent=0cm
+\setlist{itemsep=0.6em}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{FACULTAD DE INGENIERÍA\\DEPTO DE INGENIERÍA INDUSTRIAL \\ MACROECONOMÍA (580323)}
+\fancyhead[R]{\includegraphics[scale=0.13]{escudoudec.jpg}}
+\fancyfoot{\thepage}
+\fancyfoot[R]{Semestre 2026-2}
+\fancyfoot[L]{CMP/IGU/AFR}
+\renewcommand{\headrulewidth}{0.9pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\begin{document}
+\vspace*{0.01cm}
+
+\begin{center}
+{\Large \bfseries Compilado C1 - Macroeconomía 2026 \\[0.5cm]}
+\textbf{Profesor:} Cristian Mardones, Ph.D. \quad \textbf{Ayudantes:} Ignacio Garrido U. Alex Fierro R.
+\end{center}
+
+\section*{\textbf{Ejercicios de Certamenes Anteriores (2025, 2024, 2023, 2022, 2021)}}
+
+\subsection*{(Certamen 1, 2025)}
+
+% ========================= PREGUNTA 1 =========================
+\textbf{PREGUNTA 1 (1,5 puntos)}\\[0.3cm]
+Suponga que la economía se encuentra inicialmente en equilibrio. Ahora asuma que se está discutiendo un incremento sustancial en la ley de presupuesto fiscal para el próximo año. Analice y compare los efectos en el nivel de producción y nivel de precios bajo los siguientes dos supuestos alternativos:
+
+\begin{itemize}
+  \item La curva de oferta agregada de corto plazo gira sobre su eje con el tiempo debido a rigideces nominales y ajustes lentos de precios.
+  \item Los agentes económicos tienen expectativas racionales, ajustan sus expectativas inmediatamente y la curva de oferta agregada refleja estos cambios sin retardos.
+\end{itemize}
+
+Explique y grafique cómo se ajusta la economía desde el corto hasta el largo plazo y cuál es la efectividad del estímulo fiscal en cada escenario.
+
+\vspace{0.8cm}
+
+% ========================= PREGUNTA 2 =========================
+\textbf{PREGUNTA 2 (1,5 puntos)}\\[0.3cm]
+Suponga que la curva de Phillips con expectativas adaptativas y la ley de Okun de una economía se pueden representar por las siguientes ecuaciones usando datos anuales:
+
+\[
+\pi_t = \pi_{t-1} - 0{,}4(u_t - 0{,}08)
+\]
+\[
+\frac{(Y_t - Y_t^*)}{Y_t^*} = 0{,}03 - 0{,}5u_t
+\]
+
+A partir de la información previa determine lo siguiente:
+\begin{enumerate}[label=\alph*)]
+  \item ¿Cuál es la tasa de desempleo natural?
+  \item ¿Cuál sería la tasa de desempleo si el Banco Central desea reducir la inflación a solo 3,5\% este año? Asuma que el año anterior la inflación fue 4\%.
+  \item Si el Banco Central logra reducir la inflación a la meta propuesta, demuestre si la economía entraría o no en recesión.
+\end{enumerate}
+
+\newpage
+\vspace*{0.5cm}
+
+% ========================= PREGUNTA 3 =========================
+\textbf{PREGUNTA 3 (1,5 puntos)}\\[0.3cm]
+Suponga que la producción final de la economía se puede caracterizar por la siguiente función de producción:
+
+\[
+Y_t = A_t K_t^{0{,}6} L_t^{0{,}4}
+\]
+
+A partir de la ecuación previa, obtenga paso a paso una fórmula para determinar la \textbf{tasa de crecimiento de la productividad total de factores}. Luego, use los siguientes datos para calcular la evolución de la productividad total de factores a través del tiempo:
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Período} & \textbf{Crec. PIB (\%)} & \textbf{Crec. Capital (\%)} & \textbf{Crec. Trabajo (\%)} \\
+\midrule
+2001–2005 & 3,50 & 2,00 & 1,00 \\
+2006–2010 & 2,80 & 1,80 & 0,80 \\
+2011–2015 & 2,50 & 2,00 & 0,60 \\
+2016–2020 & 2,40 & 2,20 & 0,50 \\
+2021–2025 & 2,20 & 2,00 & 1,00 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.8cm}
+
+% ========================= PREGUNTA 4 =========================
+\textbf{PREGUNTA 4 (1,5 puntos)}\\[0.3cm]
+Según el último informe del Banco Central de Chile publicado en septiembre de 2025, la tasa de desempleo se ubica por sobre sus niveles previos a la pandemia y la tasa de creación neta de empleo formal ha sido mayormente negativa o cercana a cero desde 2023. Además, se presenta evidencia cuantitativa que ratifica el impacto negativo en el empleo por el aumento de los costos laborales (\href{https://www.bcentral.cl/documents/33528/7692839/IPoM+Septiembre+2025.pdf/af7fddd9-91c4-ac85-9f3a-3b71b6cf6ece}{Banco Central de Chile, 2025}).
+
+\begin{enumerate}[label=\alph*)]
+  \item Explique a qué curva del modelo de OA y DA debería afectar inicialmente el aumento en los costos laborales y por qué.
+  \item Use el modelo de OA y DA para explicar cómo este shock afecta el nivel de precios y producción final en el mediano plazo, suponiendo que no existen otras políticas o shocks que afecten a la economía.
+  \item ¿Qué podría ocurrir en el largo plazo con la OA si los salarios reales no bajan lo suficiente para motivar a las firmas a contratar nuevos trabajadores y las personas se desalientan por no encontrar trabajo y dejan de buscarlo?
+\end{enumerate}
+\newpage
+\vspace*{0.05cm}
+\subsection*{(Certamen 1, 2024)}
+\textbf{PREGUNTA 1 (1,5 puntos):}  
+Suponga que la curva de Phillips con expectativas de una economía se puede representar por la siguiente ecuación, la cual fue estimada a través de técnicas estadísticas:
+\[
+\pi_t = \pi_{t-1} + (0,05 - 1,25u_t)
+\]
+\begin{enumerate}[label=\alph*)]
+    \item ¿Existen expectativas racionales en esta economía? ¿Por qué?
+    \item ¿Cuál es la tasa de desempleo natural de esta economía? 
+\end{enumerate}
+
+\textbf{PREGUNTA 2 (1,5 puntos):}  
+Suponga que la curva de oferta agregada chilena se puede caracterizar por la siguiente ecuación:
+\[
+P_{t+1} = P_t \left[ 1 + \lambda (Y - Y^*) \right]
+\]
+Explique y grafique el proceso de ajuste a través del tiempo con un modelo de oferta y demanda agregada si existe una importante caída en las importaciones. Preocúpese  de etiquetar adecuadamente el gráfico, cualquier omision tendrá descuento.
+
+\vspace{0.3cm}
+
+\textbf{PREGUNTA 3 (1,5 puntos):}  
+Suponga que la economía de un país se puede representar por las siguientes ecuaciones:
+\[
+Y = 15K^{0,5}L^{0,5}, \quad K=2500, \quad L=400
+\]
+\[
+C = 250 + 0,6Y_D, \quad T = 0,1Y, \quad TR=1000, \quad G=1600, \quad XN=400
+\]
+
+Determine:
+\begin{enumerate}[label=\alph*)]
+    \item PIB, Ingreso Disponible, Ahorro Privado, Ahorro del Gobierno e Inversion.  
+\end{enumerate}
+\vspace{0.3cm}
+
+\textbf{PREGUNTA 4 (1,5 puntos):}  
+Un informe de Junio del 2024 del Banco Central de Chile detectó un incremento en las expectativas de inflacion en cuatro decimas por encima de lo previsto para este año debido al descongelamiento de las tarifas electricas. \textbf{Use un modelo de OA y DA con expectativas racionales para explicar los efectos en el nivel de precios, PIB y desempleo.}  Asuma que no existen politicas de estabilizacion y que los hogares son capaces de reducir el consumo de otros bienes para cubrir el alza de las tarifas electricas manteniendo inalterado el consumo agregado.
+
+
+\newpage
+\vspace*{0.05cm}
+\subsection*{(Certamen 1, 2023)}
+\textbf{PREGUNTA 1 (1,5 puntos):}  
+Grafique con un modelo de OA y DA cuál sería el impacto en el mediano plazo de los siguientes shocks sobre la producción final y el nivel de precios:
+\begin{enumerate}[label=\alph*)]
+    \item Reducción en la jornada laboral de 45 a 40 hrs.  
+    \item Mejora en las expectativas económicas futuras de los agentes privados.  
+\end{enumerate}
+
+\vspace*{0.1cm}
+
+Analice cada una de estas politicas o shocks de forma independiente (dos graficos), indicando claramente si la produccion final y nivel de precios sube o baja.
+
+\vspace{0.3cm}
+
+\textbf{PREGUNTA 2 (1,5 puntos):}  
+Grafique detalladamente el mecanismo de ajuste de precios en el modelo de oferta y demanda agregada para una situación en la que existe una fuerte contracción de la demanda agregada. El análisis gráfico debe reflejar la dinámica desde $t=0$ hasta $t=\infty$. Asuma que el gobierno y el Banco Central no realizan políticas de ajuste. Además, mencione si la economía se ajustará rápidamente a este shock, ¿por qué?
+
+\vspace{0.3cm}
+
+\textbf{PREGUNTA 3 (1,5 puntos):}  
+Considere un país (isla tropical) que produce solamente tres bienes: alimentos, vestuario y energía.  
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Bien} & \textbf{Precio} & \textbf{Cantidad} \\
+\midrule
+Alimentos & \$25 & 100 \\
+Vestuario & \$40 & 50 \\
+Energía   & \$10 & 150 \\
+\bottomrule
+\end{tabular}
+\end{center}
+La mitad de la produccion de alimentos se consume internamente y la otra mitad se exporta aun precio internacional de US\$ 1,25. Todo el vestuario se consume internamente. Un tercio de la produccion de energia que proviene de fuentes renovables se vende como insumo a las firmas de alimentos, otro tercio se vende como insumo a las firmas de vestuario y el resto lo consumen los hogares. Este pais importa 10 unidades de vestuario de marcas internacionales a un precio de US\$ 1,5. El tiempo de cambio en el pais es \$20 CLP por dolar (US\$)
+Además, se describe el uso de bienes como insumos y comercio internacional.  
+\vspace*{0.3cm}
+
+Calcule:
+\begin{enumerate}[label=\alph*)]
+    \item Valor bruto de la producción, PIB del país, valor del consumo y valor de las exportaciones netas en moneda nacional.
+\end{enumerate}
+
+
+
+\textbf{PREGUNTA 4 (1,5 puntos):}  
+La producción y los precios de los diferentes bienes generados en una economía están representados en la siguiente tabla.
+
+\begin{center}
+\begin{tabular}{c c c c c c c c c c c}
+\toprule
+\textbf{Año} & $P_A$ & $Q_A$ & $P_B$ & $Q_B$ & $P_C$ & $Q_C$ & $P_D$ & $Q_D$ & $P_E$ & $Q_E$ \\
+\midrule
+2020 & \$50 & 90  & \$8  & 200 & \$120 & 30 & \$8  & 300 & \$5  & 100 \\
+2021 & \$50 & 100 & \$8  & 250 & \$110 & 20 & \$10 & 200 & \$10 & 100 \\
+2022 & \$80 & 120 & \$9  & 280 & \$120 & 10 & \$12 & 250 & \$15 & 90  \\
+2023 & \$60 & 110 & \$10 & 280 & \$130 & 20 & \$15 & 240 & \$20 & 90  \\
+\bottomrule
+\end{tabular}
+\end{center}
+\newpage
+\vspace*{0.1cm}
+Los bienes de los sectores A y B son consumidos por los hogares, los bienes del sector C se destinan a una inversión, los bienes del sector D son adquiridos por el gobierno, y los bienes del sector E son exportados.
+
+Determine:
+\vspace*{0.1cm}
+\begin{enumerate}[label=\alph*)]
+    \item PIB nominal para el año 2022, PIB real para el año 2023 con año base 2020 y la tasa de crecimiento de la economia entre 2021 y 2022 con año base 2020.
+\end{enumerate}
+
+
+\vspace*{0.05cm}
+\subsection*{(Certamen 1, 2022)}
+\textbf{PREGUNTA 1 (1,5 puntos):}  
+El Banco Central de un país acaba de estimar la siguiente curva de Phillips con expectativas:  
+\[
+\pi_t = \pi_{t-1} - 0,5(u_t - 0,06)
+\]
+
+\vspace*{0.1cm}
+También, se ha estimado una ecuación para la Ley de Okun:  
+
+\[
+\frac{(Y_t - Y_t^*)}{Y_t^*} = 0,09 - 1,5u_t
+\]
+
+A partir de la información previa determine lo siguiente:  
+
+\begin{enumerate}[label=\alph*)]
+    \item ¿Cuál es la tasa de desempleo natural?  
+    \item ¿En cuántos puntos porcentuales debería aumentar la tasa de desempleo si el Banco Central desea reducir la inflación a solo 3\% este año? Asuma que el año anterior la inflación fue 5\%.  
+    \item Si el Banco Central logra reducir la inflación a 3\%, ¿cómo variaría porcentualmente el PIB respecto al PIB potencial?  
+\end{enumerate}
+
+\vspace{0.4cm}
+
+\textbf{PREGUNTA 2 (1,5 puntos):}  
+
+Si los agentes económicos \textbf{tienen expectativas racionales} y confían en que el Banco Central está comprometido con reducir la inflación, el costo de reducir la inflación es mucho menor que cuando los agentes económicos son escépticos sobre el compromiso del Banco Central para luchar contra la inflación.  
+
+\begin{enumerate}[label=\alph*)]
+    \item Argumente si la afirmación previa es verdadera o falsa.  
+    \item Si usted fuera presidente del Banco Central, ¿cómo podría incrementar la confianza de los agentes económicos en su gestión?  
+\end{enumerate}
+
+
+\vspace{0.3cm}
+\textbf{PREGUNTA 3 (1,5 puntos):}  
+
+La producción de bienes de una economía y sus respectivos precios están representados en la siguiente tabla. Los bienes de los sectores A y B son vendidos a los hogares, los bienes del sector C son adquiridos por el gobierno, los bienes del sector D son exportados, mientras que los bienes del sector E y F son utilizados para fabricar los bienes A, B, C y D.  
+
+\begin{center}
+\begin{tabular}{c c c c c c c c c c c c c}
+\toprule
+\textbf{Año} & $P_A$ & $Q_A$ & $P_B$ & $Q_B$ & $P_C$ & $Q_C$ & $P_D$ & $Q_D$ & $P_E$ & $Q_E$ & $P_F$ & $Q_F$ \\
+\midrule
+2020 & \$500 & 100 & \$10 & 2000 & \$100 & 80 & \$10 & 600 & \$100 & 700 & \$20 & 1000 \\
+2021 & \$540 & 120 & \$9 & 1800 & \$120 & 90 & \$15 & 500 & \$80  & 900 & \$30  & 1100  \\
+\bottomrule
+\end{tabular}
+\end{center}
+\newpage
+\vspace*{0.1cm}
+\begin{enumerate}[label=\alph*)]
+    \item Determine el PIB nominal para cada año y la tasa de crecimiento del PIB real usando los precios del año 2020 como base.  
+    \item Calcule el deflactor del PIB e índice de precios al consumidor para cada período y luego compare la tasa de inflación medida a través de ambos indicadores.  
+\end{enumerate}
+
+\vspace*{0.1cm}
+
+\textbf{PREGUNTA  4 (1,5 puntos):}  
+
+La economía de Reino Unido y otros países europeos ha sufrido un importante shock energético por el corte de suministro de gas ruso. A fines de agosto, los precios del gas en el principal centro de comercialización del continente europeo alcanzaron los 292 euros por megavatio hora, una cifra extraordinaria comparada con los 97 euros de hace un año (Fuente: \url{https://es.euronews.com/my-europe/2022/08/25/hasta-donde-pueden-llegar-los-precios-del-gas-en-europa-tras-batir-un-nuevo-record}).  
+
+\vspace*{0.1cm}
+\begin{enumerate}[label=\alph*)]
+    \item Explique con un modelo de DA y OA cómo este shock afecta el equilibrio de la economía de Reino Unido en el mediano plazo y cómo se ajustaría la economía en el largo plazo sin políticas de estabilización. Asuma que no existen otros shocks.  
+    \item Si el gobierno de Reino Unido ayuda a todas las familias (sin focalización) con transferencias o subsidios para afrontar los elevados costos de la energía, ¿qué consecuencias tendría esta política según el modelo de DA y OA? \textit{Hint del Ayudante: Lógica de mediano y largo plazo}
+    \item En este escenario, ¿qué tipo de política usted esperaría por parte del Banco Central del Reino Unido?  
+\end{enumerate}
+
+
+\newpage
+\vspace*{0.1cm}
+\subsection*{(Certamen 1, 2021)}
+\textbf{PREGUNTA 1 (1,5 puntos):}  
+En Chile, la inflación ha aumentado, ubicándose en 5,3\% anual a septiembre. El alza ha sido transversal entre los distintos ítems del IPC, reflejando presiones de demanda interna, costos y alza del tipo de cambio. Las expectativas de inflación superaron 6\% a fin de año, sobre las proyecciones del Banco Central. En consecuencia, el Consejo del Banco Central decidió adelantar el retiro del estímulo monetario para evitar un aumento más persistente (\textbf{Fuente: Banco Central de Chile}).  
+
+\begin{enumerate}[label=\alph*)]
+    \item Utilice el modelo de DA y OA con expectativas para explicar gráficamente por qué la inflación se elevó en Chile. Muestre también el equilibrio de largo plazo si el Banco Central no hubiese retirado el estímulo monetario aplicado originalmente para enfrentar la crisis del COVID-19.  
+    \item Suponga que la decisión del Banco Central afecta a la DA y además influye en las expectativas de inflación. Muestre cómo cambia la respuesta anterior en el modelo DA--OA con expectativas.  
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\textbf{PREGUNTA 2 (1,5 puntos):}  
+La última encuesta de empleo de un país muestra que existen $15,92$ millones de personas en edad de trabajar, de las cuales $9,11$ millones estan trabajando o están desempleadas. Se sabe que $1,32$ millones de personas tiene empleo informal, y además, $0,77$ millones no tienen trabajo, aunque lo están buscando activamente. Tambien, se sabe que $0,91$ millones de personas no han buscando empleo en el ultimo mes, pero estarian dispuestas a trabajar si les ofrecieran uno en las proximas dos semanas.
+
+\begin{enumerate}[label=\alph*)]
+    \item ¿Cuál es el número de ocupados?  
+    \item ¿Cuál es la tasa de participación laboral?  
+    \item ¿Cuál es la tasa de desempleo?  
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\textbf{PREGUNTA 3 (1,5 puntos):}
+La producción de bienes de una economía y sus respectivos precios desde 2016 hasta 2020 están representados en la siguiente tabla. Los bienes de los sectores A, B y C son vendidos a consumidores finales, gobierno o al extranjero, mientras que el bien del sector D es utilizado como insumo para fabricar los otros tres bienes.
+
+\begin{center}
+\begin{tabular}{c c c c c c c c c}
+\toprule
+\textbf{Año} & $P_A$ & $Q_A$ & $P_B$ & $Q_B$ & $P_C$ & $Q_C$ & $P_D$ & $Q_D$ \\
+\midrule
+2016 & 8  & 50 & 12 & 10 & 16 & 80 & 6  & 10 \\
+2017 & 13 & 55 & 16 & 11 & 19 & 84 & 9  & 12 \\
+2018 & 14 & 58 & 18 & 14 & 22 & 82 & 12 & 13 \\
+2019 & 13 & 53 & 15 & 22 & 25 & 83 & 15 & 18 \\
+2020 & 30 & 54 & 16 & 22 & 28 & 88 & 18 & 19 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\newpage
+\vspace*{0.1cm}
+\begin{enumerate}[label=\alph*)]
+  \item Determine la tasa de crecimiento del PIB nominal para cada año y señale si este indicador es útil para reflejar el crecimiento de la economía.
+  \item Demuestre cómo el cambio del año base desde 2016 a 2021 modifica la tasa de crecimiento del PIB real (utilice porcentajes con un decimal, XX,X\%), luego mencione si existe una alternativa metodológica para solucionar el problema asociado al cambio del año base.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\textbf{PREGUNTA 4 (1,5 puntos):}
+Existen dos países vecinos idénticos en términos económicos y de población cuyos gobiernos actuales proponen incrementar fuertemente el gasto público a través de impuestos a las utilidades de las empresas y/o endeudamiento, lo anterior a partir del próximo año. La mayoría de la población de ambos países está de acuerdo con la decisión ya que existen muchas necesidades sociales insatisfechas y creen que así se incrementará más su nivel de bienestar. Sin embargo, los economistas advierten que el principal efecto negativo sería reducir significativamente la inversión.  
+
+\begin{enumerate}[label=\alph*)]
+    \item Con un análisis gráfico de DA y OA de largo plazo determine la trayectoria del nivel de precios y producción final de ambos países, suponiendo que el primer país adopta esta política de forma permanente y el otro país adopta esta política solo en el primer período presidencial. Suponga que cada período presidencial dura cinco años y el análisis se realiza para los quinquenios 2020, 2025, 2030 y 2035. Además, explique los canales a través de los cuales esta política afecta a la DA y/o OA.  
+    \item ¿Qué país disfrutará de un mayor nivel de ingreso y consumo al 2035? ¿Qué país terminará con más inflación? ¿Por qué?  
+\end{enumerate}
+
+
+
+\end{document}
