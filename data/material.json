@@ -9,6 +9,7 @@
     "topics": ["Macroeconomía", "Introducción"],
     "files": {
       "listado": "assets/material/ayudantia-01/ayudantia-01.pdf",
+      "PAUTA": "assets/material/ayudantia-01/PAUTA-ayudantia-01.pdf",
       "ppt": "assets/material/ayudantia-01/PPT-ayudantia-01.pdf",
       "latex": "assets/material/ayudantia-01/ayudantia-01.tex"
     }
@@ -23,8 +24,37 @@
     "topics": ["Cuentas Nacionales", "PIB", "Componentes"],
     "files": {
       "listado": "assets/material/ayudantia-02/ayudantia-02.pdf",
+      "PAUTA": "assets/material/ayudantia-02/PAUTA-ayudantia-02.pdf",
       "ppt": "assets/material/ayudantia-02/PPT-ayudantia-02.pdf",
       "latex": "assets/material/ayudantia-02/ayudantia-02.tex"
+    }
+  },
+  {
+    "id": "ayudantia-03",
+    "title": "Ayudantía 03 — Mercado Laboral y Modelo OA-DA",
+    "description": "Estudio del mercado laboral y presentación del modelo OA-DA.",
+    "category": "Ayudantías",
+    "date": "2026-09-24",
+    "authors": ["Ignacio Garrido", "Alex Fierro"],
+    "topics": ["Cuentas Nacionales", "PIB", "Componentes"],
+    "files": {
+      "listado": "assets/material/ayudantia-03/ayudantia-03.pdf",
+      "PAUTA": "assets/material/ayudantia-03/PAUTA-ayudantia-03.pdf",
+      "ppt": "assets/material/ayudantia-03/PPT-ayudantia-03.pdf",
+      "latex": "assets/material/ayudantia-03/ayudantia-03.tex"
+    }
+  },
+  {
+    "id": "ayudantia-04",
+    "title": "Ayudantía 04 — Repaso C1",
+    "description": "Repaso de los conceptos vistos PRE Certamen 1.",
+    "category": "Ayudantías",
+    "date": "2026-09-24",
+    "authors": ["Ignacio Garrido", "Alex Fierro"],
+    "topics": ["Cuentas Nacionales", "PIB", "Componentes"],
+    "files": {
+      "listado": "assets/material/ayudantia-04/ayudantia-04.pdf",
+      "latex": "assets/material/ayudantia-04/ayudantia-04.tex"
     }
   }
 ]

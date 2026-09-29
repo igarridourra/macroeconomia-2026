@@ -1,0 +1,239 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+\parindent = 0cm
+\setlist{itemsep=0.6em}
+
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,latexsym,cancel}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\LVert#1\RVert}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+
+% Márgenes limpios y compactos para todo el documento
+\usepackage[lmargin=2cm,rmargin=2cm,top=2cm,bottom=2.5cm]{geometry}
+\usepackage{xspace}
+
+% ======================================================================
+%  DEFINICIÓN DEL TÍTULO DEL TEMA
+% ======================================================================
+\newcommand{\titulotema}{Mercado Laboral y Modelo OA-DA}
+
+% ======================================================================
+%  CONFIGURACIÓN DE ENCABEZADOS Y PIES DE PÁGINA (fancyhdr)
+% ======================================================================
+\usepackage{fancyhdr}
+
+% --- Estilo general: desde la página 2 en adelante ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Macroeconomía (580323)}
+\fancyhead[R]{\titulotema}
+\renewcommand{\headrulewidth}{0.5pt} % Sin línea superior
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{Semestre 2026-2}
+\fancyfoot[L]{CMP/IGU/AFR}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% --- Estilo exclusivo de la Página 1 ---
+\fancypagestyle{primerapagina}{%
+  \fancyhf{}
+  \fancyhead[L]{\small FACULTAD DE INGENIERÍA\\DEPTO DE INGENIERÍA INDUSTRIAL \\ MACROECONOMÍA (580323)}
+  \fancyhead[R]{\includegraphics[scale=0.13]{escudoudec.jpg}}
+  \renewcommand{\headrulewidth}{0.9pt}
+  \fancyfoot[C]{\thepage}
+  \fancyfoot[R]{Semestre 2026-2}
+  \fancyfoot[L]{CMP/IGU/AFR}
+  \renewcommand{\footrulewidth}{0.5pt}
+}
+
+% Enlaces
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% Paquete de recuadros avanzados
+\usepackage[many]{tcolorbox}
+
+% ======================================================================
+%  DEFINICIÓN DEL RECUADRO CON BORDES REDONDEADOS Y BARRA AZUL
+% ======================================================================
+\definecolor{headblue}{RGB}{0, 15, 137}      
+\definecolor{frameblue}{RGB}{41, 98, 153}     
+\definecolor{bgsoftblue}{RGB}{247, 249, 253}  
+
+\newtcolorbox{solucion}[1][]{%
+    enhanced,
+    breakable,
+    colback=bgsoftblue,
+    colframe=frameblue!75!black,
+    colbacktitle=headblue,
+    coltitle=white,
+    fonttitle=\bfseries\normalsize,
+    title={Solución:\ifx&#1&\else\ \normalfont\small(#1)\fi},
+    arc=2.5mm,
+    boxrule=0.7pt,
+    titlerule=0pt,
+    toptitle=1.5mm,
+    bottomtitle=1.5mm,
+    left=4mm, right=4mm, top=3mm, bottom=3mm,
+    before skip=4mm,
+    after skip=4mm,
+    skin first=enhanced,
+    skin middle=enhanced,
+    skin last=enhanced,
+    arc=2.5mm,
+    bottomrule=0.7pt,
+    toprule=0.7pt
+}
+
+\newenvironment{solucionpartes}{%
+    \begin{enumerate}[label=\textbf{(\alph*)}, leftmargin=1.2cm, itemsep=0.5em]
+}{%
+    \end{enumerate}
+}
+
+\newcommand{\checkformula}[1]{\noindent\textbf{Chequeo de consistencia: } #1 \quad \checkmark}
+
+% ======================================================================
+%  COMANDOS PERSONALIZADOS
+% ======================================================================
+
+\newcounter{ejercicio}
+\newcommand{\ejercicio}[1][]{%
+  \stepcounter{ejercicio}%
+  \bigskip\noindent\textbf{Ejercicio \arabic{ejercicio}\ifx&#1&\relax.\else\ (#1).\fi}\ %
+}
+
+\newenvironment{partes}
+  {\begin{enumerate}[label=(\alph*), leftmargin=1.5cm]}
+  {\end{enumerate}}
+
+\newenvironment{tabladatos}
+  {\begin{center}}
+  {\end{center}}
+
+\newenvironment{recuadro}[1]{%
+  \noindent\colorbox{black!8}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \centering\Large\bfseries #1
+    }%
+  }\par\vspace{4mm}\noindent
+}{\par}
+
+\begin{document}
+\thispagestyle{primerapagina}
+
+\vspace*{0.05cm}
+
+\begin{center}
+  {\Large \textbf{Listado 3 -- Macroeconomía (580323)}}\\[0.15cm]
+  {\large \titulotema}
+\end{center}
+
+\bigskip
+
+\textbf{Profesor:} Cristian Mardones, Ph.D. \quad
+\textbf{Ayudantes:} Ignacio Garrido U, Alex Fierro R.
+
+\bigskip
+
+
+
+
+
+
+
+
+
+%=======================================================================
+% EJERCICIO -- Empleo y Población Activa en Valdivia
+%=======================================================================
+\ejercicio[P]
+En Valdivia hay 100.000 habitantes. De ellos, 25.000 son demasiado mayores para trabajar y 15.000 son demasiado jóvenes. De los 60.000 restantes, 10.000 no se encuentran trabajando ni buscando empleo, 45.000 tienen empleo y los 5.000 restantes se encuentran buscando empleo pero siguen sin trabajo.
+
+\begin{partes}
+  \item ¿Cuál es la población activa de la ciudad?
+  \item ¿Cuál es la tasa de desempleo?
+  \item ¿Cuántas personas son trabajadores ``NINI''?
+\end{partes}
+
+
+\ejercicio[P, Certamen 2021]  
+La última encuesta de empleo de un país muestra que existen $15,92$ millones de personas en edad de trabajar, de las cuales $9,11$ millones están trabajando o están desempleadas. Se sabe que $1,32$ millones de personas tienen empleo informal, y además, $0,77$ millones no tienen trabajo, aunque lo están buscando activamente. También, se sabe que $0,91$ millones de personas no han buscado empleo en el último mes, pero estarían dispuestas a trabajar si les ofrecieran uno en las próximas dos semanas.
+
+\begin{partes}
+    \item ¿Cuál es el número de ocupados?  
+    \item ¿Cuál es la tasa de participación laboral?  
+    \item ¿Cuál es la tasa de desempleo?  
+\end{partes}
+
+
+\ejercicio
+Considere una economía en la que se registran $190$ millones de personas en edad de trabajar. De este grupo, $120$ millones cuentan con empleo. De la población restante, $10$ millones se encuentran buscando empleo de manera activa, $15$ millones corresponden a personas que han desistido de buscarlo y $45$ millones no desean trabajar.
+
+\begin{partes}
+    \item ¿Cuál es el tamaño de la población activa?
+    \item ¿Cuál es la tasa de actividad?
+    \item ¿Cuál es la tasa oficial de desempleo?
+\end{partes}
+
+\ejercicio[P]
+Comente brevemente c\'omo afectan las siguientes situaciones a las curvas de Demanda Agregada  y/o Oferta Agregada, indicando qu\'e curva se desplaza y en qu\'e direcci\'on (hacia la derecha o hacia la izquierda):
+
+\begin{partes}
+    \item Implementaci\'on de la ley que reduce la jornada laboral de 45 a 40 horas semanales manteniendo los salarios.
+    \item Aumento en el precio internacional de los combustibles y fletes derivado de un conflicto b\'elico.
+    \item Incremento del gasto p\'ublico en obras viales y edificaci\'on de viviendas sociales.
+    \item Establecimiento de sobretasas arancelarias a las importaciones de productos e insumos extranjeros.
+\end{partes}
+
+%=======================================================================
+% EJERCICIO -- Shock de Costos Laborales en Modelo OA-DA (Certamen 2025)
+%=======================================================================
+\ejercicio[P, Certamen 2025]
+Según el último informe del Banco Central de Chile publicado en septiembre de 2025, la tasa de desempleo se ubica por sobre sus niveles previos a la pandemia y la tasa de creación neta de empleo formal ha sido mayormente negativa o cercana a cero desde 2023. Además, se presenta evidencia cuantitativa que ratifica el impacto negativo en el empleo por el aumento de los costos laborales (\url{https://www.bcentral.cl/documents/33528/7622839/IPoM%20Septiembre%202025.pdf/af7fdd2d-91e4-ac85-9f33-3b713bf6cece}).
+
+\begin{partes}
+    \item Explique a qué curva del modelo de OA y DA debería afectar inicialmente el aumento en los costos laborales y ¿por qué?
+    \item Use el modelo de OA y DA para explicar cómo este shock afecta el nivel de precios y producción final en el mediano plazo, suponiendo que no existen otras políticas o shocks que afecten a la economía.
+    \item ¿Qué podría ocurrir en el largo plazo con la OA si los salarios reales no bajan lo suficiente para motivar a las firmas a contratar nuevos trabajadores y las personas se desalientan por no encontrar trabajo y dejan de buscarlo?
+\end{partes}
+
+
+%=======================================================================
+% EJERCICIO -- Shock Energético en Europa (Certamen 2025-2)
+%=======================================================================
+\ejercicio[Certamen 2022]
+La economía de Reino Unido y otros países europeos ha sufrido un importante shock energético por el corte de suministro de gas ruso. A fines de agosto, los precios del gas en el principal centro de comercialización del continente europeo alcanzaron los $292$ euros por megavatio hora, una cifra extraordinaria comparada con los $97$ euros de hace un año (Fuente: \href{https://es.euronews.com/my-europe/2022/08/25/hasta-donde-pueden-llegar-los-precios-del-gas-en-europa-tras-batir-un-nuevo-record}{Euronews, agosto 2022}).
+
+\begin{partes}
+    \item Explique con un modelo de DA y OA cómo este shock afecta el equilibrio de la economía de Reino Unido en el mediano plazo y cómo se ajustaría la economía en el largo plazo sin políticas de estabilización. Asuma que no existen otros shocks.
+    \item Si el gobierno de Reino Unido ayuda a todas las familias (sin focalización) con transferencias o subsidios para afrontar los elevados costos de la energía, ¿qué consecuencias tendría esta política según el modelo de DA y OA? 
+    \item En este escenario, ¿qué tipo de política usted esperaría por parte del Banco Central del Reino Unido?
+\end{partes}
+
+%=======================================================================
+% EJERCICIO -- Gasto Público, Inversión y Crecimiento en OA-DA
+%=======================================================================
+
+\ejercicio[P, Certamen 2021]
+Existen dos países vecinos idénticos en términos económicos y de población cuyos gobiernos actuales proponen incrementar fuertemente el gasto público a través de impuestos a las utilidades de las empresas y/o endeudamiento, lo anterior a partir del próximo año. La mayoría de la población de ambos países está de acuerdo con la decisión ya que existen muchas necesidades sociales insatisfechas y creen que así se incrementará más su nivel de bienestar. Sin embargo, los economistas advierten que el principal efecto negativo sería reducir significativamente la inversión.
+
+\begin{partes}
+    \item Con un análisis gráfico de DA y OA de largo plazo, determine la trayectoria del nivel de precios y producción final de ambos países, suponiendo que el primer país adopta esta política de forma permanente y el otro país adopta esta política solo en el primer período presidencial. Suponga que cada período presidencial dura cinco años y el análisis se realiza para los quinquenios 2020, 2025, 2030 y 2035. Además, explique los canales a través de los cuales esta política afecta a la DA y/o OA.
+    \item ¿Qué país disfrutará de un mayor nivel de ingreso y consumo al 2035? ¿Qué país terminará con más inflación? ¿Por qué?
+\end{partes}
+
+
+\end{document}

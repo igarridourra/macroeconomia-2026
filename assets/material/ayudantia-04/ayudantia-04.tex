@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+\parindent = 0cm
+\setlist{itemsep=0.6em}
+
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,latexsym,cancel}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\LVert#1\RVert}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{booktabs}
+
+% Márgenes limpios y compactos para todo el documento
+\usepackage[lmargin=2cm,rmargin=2cm,top=2cm,bottom=2.5cm]{geometry}
+\usepackage{xspace}
+
+% ======================================================================
+%  DEFINICIÓN DEL TÍTULO DEL TEMA
+% ======================================================================
+\newcommand{\titulotema}{Repaso Certamen 1}
+
+% ======================================================================
+%  CONFIGURACIÓN DE ENCABEZADOS Y PIES DE PÁGINA (fancyhdr)
+% ======================================================================
+\usepackage{fancyhdr}
+
+% --- Estilo general: desde la página 2 en adelante ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Macroeconomía (580323)}
+\fancyhead[R]{\titulotema}
+\renewcommand{\headrulewidth}{0.5pt}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{Semestre 2026-2}
+\fancyfoot[L]{CMP/IGU/AFR}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% --- Estilo exclusivo de la Página 1 ---
+\fancypagestyle{primerapagina}{%
+  \fancyhf{}
+  \fancyhead[L]{\small FACULTAD DE INGENIERÍA\\DEPTO DE INGENIERÍA INDUSTRIAL \\ MACROECONOMÍA (580323)}
+  \fancyhead[R]{\includegraphics[scale=0.13]{escudoudec.jpg}}
+  \renewcommand{\headrulewidth}{0.9pt}
+  \fancyfoot[C]{\thepage}
+  \fancyfoot[R]{Semestre 2026-2}
+  \fancyfoot[L]{CMP/IGU/AFR}
+  \renewcommand{\footrulewidth}{0.5pt}
+}
+
+% Enlaces
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% ======================================================================
+%  COMANDOS PERSONALIZADOS
+% ======================================================================
+
+\newcounter{ejercicio}
+\newcommand{\ejercicio}[1][]{%
+  \stepcounter{ejercicio}%
+  \bigskip\noindent\textbf{Ejercicio \arabic{ejercicio}\ifx&#1&\relax.\else\ (#1).\fi}\ %
+}
+
+\newenvironment{partes}
+  {\begin{enumerate}[label=(\alph*), leftmargin=1.5cm]}
+  {\end{enumerate}}
+
+\newenvironment{tabladatos}
+  {\begin{center}}
+  {\end{center}}
+
+\newenvironment{recuadro}[1]{%
+  \noindent\colorbox{black!8}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \centering\Large\bfseries #1
+    }%
+  }\par\vspace{4mm}\noindent
+}{\par}
+
+\begin{document}
+\thispagestyle{primerapagina}
+
+\vspace*{0.05cm}
+
+\begin{center}
+  {\Large \textbf{Listado 4 -- Repaso -- Macroeconomía (580323)}}\\[0.15cm]
+  {\large \titulotema}
+\end{center}
+
+\bigskip
+
+\textbf{Profesor:} Cristian Mardones, Ph.D. \quad
+\textbf{Ayudantes:} Ignacio Garrido U y Alex Fierro R.
+
+\bigskip
+
+%=======================================================================
+% EJERCICIO -- Política Fiscal, Rigideces y Expectativas Racionales
+%=======================================================================
+\ejercicio[Certamen 2025]
+Suponga que la econom\'ia se encuentra inicialmente en equilibrio. Ahora asuma que se est\'a discutiendo un incremento sustancial en la ley de presupuesto fiscal para el pr\'oximo a\~no. Analice y compare los efectos en el nivel de producci\'on y nivel de precios bajo los siguientes dos supuestos alternativos:
+
+\begin{itemize}
+    \item La curva de oferta agregada de corto plazo gira sobre su eje con el tiempo debido a rigideces nominales y ajustes lentos de precios.
+\end{itemize}
+
+Explique y grafique c\'omo se ajusta la econom\'ia desde el corto hasta el largo plazo y cu\'al es la efectividad del est\'imulo fiscal en cada escenario.
+
+%=======================================================================
+% EJERCICIO -- Ajuste Dinámico de Precios ante Caída de Importaciones
+%=======================================================================
+\ejercicio[Certamen 2023]
+Suponga que la curva de oferta agregada chilena se puede caracterizar por la siguiente ecuaci\'on:
+\[P_{t+1} = P_t \left[ 1 + \lambda (Y - Y^*) \right]\]
+Explique y grafique el proceso de ajuste a trav\'es del tiempo con un modelo de oferta y demanda agregada si existe una importante ca\'ida en las importaciones. Preoc\'upese de etiquetar adecuadamente el gr\'afico, cualquier omisi\'on tendr\'a descuento.
+
+%=======================================================================
+% EJERCICIO -- Cuentas Nacionales, PIB Nominal y Cambio de Base
+%=======================================================================
+\ejercicio[Certamen 2021]
+La producci\'on de bienes de una econom\'ia y sus respectivos precios desde 2016 hasta 2020 est\'an representados en la siguiente tabla. Los bienes de los sectores A, B y C son vendidos a consumidores finales, gobierno o al extranjero, mientras que el bien del sector D es utilizado como insumo para fabricar los otros tres bienes.
+
+\begin{center}
+\begin{tabular}{c c c c c c c c c}
+\toprule
+\textbf{Año} & $P_A$ & $Q_A$ & $P_B$ & $Q_B$ & $P_C$ & $Q_C$ & $P_D$ & $Q_D$ \\
+\midrule
+2016 & 8  & 50 & 12 & 10 & 16 & 80 & 6  & 10 \\
+2017 & 13 & 55 & 16 & 11 & 19 & 84 & 9  & 12 \\
+2018 & 14 & 58 & 18 & 14 & 22 & 82 & 12 & 13 \\
+2019 & 13 & 53 & 15 & 22 & 25 & 83 & 15 & 18 \\
+2020 & 30 & 54 & 16 & 22 & 28 & 88 & 18 & 19 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{partes}
+    \item Determine la tasa de crecimiento del PIB nominal para cada a\~no y se\~nale si este indicador es \'util para reflejar el crecimiento de la econom\'ia.
+    \item Demuestre c\'omo el cambio del a\~no base desde 2016 a 2020 modifica la tasa de crecimiento del PIB real (utilice porcentajes con un decimal, XX,X\%), luego mencione si existe una alternativa metodol\'ogica para solucionar el problema asociado al cambio del a\~no base.
+\end{partes}
+
+%=======================================================================
+% EJERCICIO -- Auditoría de Cuentas Nacionales
+%=======================================================================
+\newpage
+\ejercicio
+Un analista junior le entrega el siguiente borrador de c\'alculo del PIB de un pa\'is para 2026 y le pide revisarlo antes de publicarlo. Su borrador \textbf{sum\'o} los siguientes conceptos:
+
+\begin{enumerate}[label=\arabic*.]
+    \item El valor de todas las ventas de trigo de agricultores a molinos, m\'as el valor de toda la harina vendida por los molinos a panader\'ias, m\'as el valor de todo el pan vendido a los hogares.
+    \item El valor de todas las viviendas \textbf{usadas} compradas y vendidas durante el a\~no.
+    \item El pago de intereses de la deuda p\'ublica del gobierno a los tenedores de bonos.
+\end{enumerate}
+Adem\'as, el analista \textbf{excluy\'o} deliberadamente del c\'alculo:
+\begin{enumerate}[label=\arabic*., resume]
+    \item La producci\'on de una f\'abrica de zapatos que no logr\'o vender un $15\%$ de su producci\'on, la cual qued\'o como inventario en bodega, argumentando que ``no se vendi\'o, as\'i que no genera actividad econ\'omica''.
+\end{enumerate}
+Y s\'i incluy\'o, sin dudarlo:
+\begin{enumerate}[label=\arabic*., resume]
+    \item La compra de un cami\'on nuevo por parte de una empresa de transporte de carga.
+\end{enumerate}
+
+\begin{partes}
+    \item Para cada uno de los cinco \'items, indique si est\'a correctamente tratado, incorrectamente incluido, o incorrectamente excluido del PIB. Justifique cada caso con el concepto relevante (doble conteo, bienes usados, transferencias, inventarios como inversi\'on, etc.).
+    \item Reformule correctamente el c\'alculo del \'item 1 (trigo $\to$ harina $\to$ pan), indicando qu\'e m\'etodo (gasto final o valor agregado) usar\'ia para evitar el error.
+    \item Si el gobierno decide reclasificar el pago de intereses de la deuda p\'ublica como parte del gasto de gobierno ($G$), ?`qu\'e le dir\'ia usted como asesor t\'ecnico? Explique la diferencia conceptual entre un gasto y una transferencia.
+\end{partes}
+
+\end{document}
