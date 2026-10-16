@@ -69,5 +69,20 @@
       "listado": "assets/material/certamenes-c1/Compilados-Certamen-1.pdf",
       "latex": "assets/material/certamenes-c1/Compilados-Certamen-1.tex"
     }
+  },
+  {
+    "id": "ayudantia-05",
+    "title": "Ayudantía 05 — Curva de Phillips y expectativas racionales",
+    "description": "Curva de Phillips y expectativas racionales.",
+    "category": "Ayudantías",
+    "date": "2026-10-15",
+    "authors": ["Ignacio Garrido", "Alex Fierro"],
+    "topics": ["Curva de Phillips", "Expectativas Racionales"],
+    "files": {
+      "listado": "assets/material/ayudantia-05/ayudantia-05.pdf",
+      "latex": "assets/material/ayudantia-05/ayudantia-05.tex",
+      "ppt": "assets/material/ayudantia-05/PPT-ayudantia-05.pdf"
+    }
   }
+    
 ]

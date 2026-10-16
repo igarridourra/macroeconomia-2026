@@ -1,0 +1,249 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+\parindent = 0cm
+\setlist{itemsep=0.6em}
+
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,latexsym,cancel}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\LVert#1\RVert}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+
+% Márgenes limpios y compactos para todo el documento
+\usepackage[lmargin=2cm,rmargin=2cm,top=2cm,bottom=2.5cm]{geometry}
+\usepackage{xspace}
+
+% ======================================================================
+%  DEFINICIÓN DEL TÍTULO DEL TEMA
+% ======================================================================
+\newcommand{\titulotema}{Curva de Phillips y expectativas racionales}
+
+% ======================================================================
+%  CONFIGURACIÓN DE ENCABEZADOS Y PIES DE PÁGINA (fancyhdr)
+% ======================================================================
+\usepackage{fancyhdr}
+
+% --- Estilo general: desde la página 2 en adelante ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Macroeconomía (580323)}
+\fancyhead[R]{\titulotema}
+\renewcommand{\headrulewidth}{0.5pt} % Sin línea superior
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{Semestre 2026-2}
+\fancyfoot[L]{CMP/IGU/AFR}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% --- Estilo exclusivo de la Página 1 ---
+\fancypagestyle{primerapagina}{%
+  \fancyhf{}
+  \fancyhead[L]{\small FACULTAD DE INGENIERÍA\\DEPTO DE INGENIERÍA INDUSTRIAL \\ MACROECONOMÍA (580323)}
+  \fancyhead[R]{\includegraphics[scale=0.13]{escudoudec.jpg}}
+  \renewcommand{\headrulewidth}{0.9pt}
+  \fancyfoot[C]{\thepage}
+  \fancyfoot[R]{Semestre 2026-2}
+  \fancyfoot[L]{CMP/IGU/AFR}
+  \renewcommand{\footrulewidth}{0.5pt}
+}
+
+% Enlaces
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% Paquete de recuadros avanzados
+\usepackage[many]{tcolorbox}
+
+% ======================================================================
+%  DEFINICIÓN DEL RECUADRO CON BORDES REDONDEADOS Y BARRA AZUL
+% ======================================================================
+\definecolor{headblue}{RGB}{0, 15, 137}      
+\definecolor{frameblue}{RGB}{41, 98, 153}     
+\definecolor{bgsoftblue}{RGB}{247, 249, 253}  
+
+\newtcolorbox{solucion}[1][]{%
+    enhanced,
+    breakable,
+    colback=bgsoftblue,
+    colframe=frameblue!75!black,
+    colbacktitle=headblue,
+    coltitle=white,
+    fonttitle=\bfseries\normalsize,
+    title={Solución:\ifx&#1&\else\ \normalfont\small(#1)\fi},
+    arc=2.5mm,
+    boxrule=0.7pt,
+    titlerule=0pt,
+    toptitle=1.5mm,
+    bottomtitle=1.5mm,
+    left=4mm, right=4mm, top=3mm, bottom=3mm,
+    before skip=4mm,
+    after skip=4mm,
+    skin first=enhanced,
+    skin middle=enhanced,
+    skin last=enhanced,
+    arc=2.5mm,
+    bottomrule=0.7pt,
+    toprule=0.7pt
+}
+
+\newenvironment{solucionpartes}{%
+    \begin{enumerate}[label=\textbf{(\alph*)}, leftmargin=1.2cm, itemsep=0.5em]
+}{%
+    \end{enumerate}
+}
+
+\newcommand{\checkformula}[1]{\noindent\textbf{Chequeo de consistencia: } #1 \quad \checkmark}
+
+% ======================================================================
+%  COMANDOS PERSONALIZADOS
+% ======================================================================
+
+\newcounter{ejercicio}
+\newcommand{\ejercicio}[1][]{%
+  \stepcounter{ejercicio}%
+  \bigskip\noindent\textbf{Ejercicio \arabic{ejercicio}\ifx&#1&\relax.\else\ (#1).\fi}\ %
+}
+
+\newenvironment{partes}
+  {\begin{enumerate}[label=(\alph*), leftmargin=1.0cm]}
+  {\end{enumerate}}
+
+\newenvironment{tabladatos}
+  {\begin{center}}
+  {\end{center}}
+
+\newenvironment{recuadro}[1]{%
+  \noindent\colorbox{black!8}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \centering\Large\bfseries #1
+    }%
+  }\par\vspace{4mm}\noindent
+}{\par}
+
+\begin{document}
+\thispagestyle{primerapagina}
+
+\vspace*{0.05cm}
+
+\begin{center}
+  {\Large \textbf{Listado 5 -- Macroeconomía (580323)}}\\[0.15cm]
+  {\large \titulotema}
+\end{center}
+
+\bigskip
+
+\textbf{Profesor:} Cristian Mardones, Ph.D. \quad
+\textbf{Ayudantes:} Ignacio Garrido U, Alex Fierro R.
+
+\bigskip
+
+
+\ejercicio
+Explique cómo se relacionan la curva de la oferta agregada
+y la de Phillips. ¿Es posible obtener alguna información de
+una que no pueda derivarse de la otra?
+
+
+
+\ejercicio[P, Certamen 2, 2023]
+Mencione y explique dos teorías que justifiquen la existencia de salarios o
+precios rígidos en la economía.
+
+\ejercicio[P]
+Comente las principales diferencias entre la Curva de Phillips con expectativas adaptativas y la que se funda en las expectativas racionales, considerando cuál fue la principal crítica al modelo de expectativas adaptativas, cómo la resuelven las expectativas racionales y qué tipos de error pueden cometer los agentes económicos en cada caso.
+
+%=======================================================================
+% EJERCICIO -- Curva de Phillips y Ley de Okun
+%=======================================================================
+\ejercicio[Certamen 1, 2025]
+Suponga que la curva de Phillips con expectativas adaptativas y la ley de Okun de una econom\'ia se pueden representar por las siguientes ecuaciones usando datos anuales:
+\[
+\begin{aligned}
+    \pi_t &= \pi_{t-1} - 0{,}4(u_t - 0{,}08) \\
+    \frac{Y_t - Y_t^*}{Y_t^*} &= 0{,}03 - 0{,}5 u_t
+\end{aligned}
+\]
+
+
+
+
+A partir de la informaci\'on previa determine lo siguiente:
+
+\begin{partes}
+    \item ?`Cu\'al es la tasa de desempleo natural?
+    \item ?`Cu\'al ser\'ia la tasa de desempleo si el Banco Central desea reducir la inflaci\'on a solo $3{,}5\%$ este a\~no? Asuma que el a\~no anterior la inflaci\'on fue $4\%$.
+    \item Si el Banco Central logra reducir la inflaci\'on a la meta propuesta, demuestre si la econom\'ia entrar\'ia o no en recesi\'on.
+\end{partes}
+
+
+%=======================================================================
+% EJERCICIO -- Curva de Phillips con Expectativas
+%=======================================================================
+\ejercicio[Certamen 1, 2024]
+Suponga que la curva de Phillips con expectativas de una econom\'ia se puede representar por la siguiente ecuaci\'on, la cual fue estimada a trav\'es de t\'ecnicas estad\'isticas:
+\[\pi_t = \pi_{t-1} + (0{,}05 - 1{,}25 u_t)\]
+
+\begin{partes}
+    \item ?`Existen expectativas racionales en esta econom\'ia? ?`Por qu\'e?
+    \item ?`Cu\'al es la tasa de desempleo natural de esta econom\'ia?
+\end{partes}
+
+
+
+%=======================================================================
+% EJERCICIO -- Curva de Phillips y Ley de Okun
+%=======================================================================
+\ejercicio[P, Certamen 1, 2022]
+El Banco Central de un pa\'is acaba de estimar la siguiente curva de Phillips con expectativas:
+\[\pi_t = \pi_{t-1} - 0{,}5(u_t - 0{,}06)\]
+Tambi\'en, se ha estimado una ecuaci\'on para la Ley de Okun:
+\[\frac{(Y_t - Y_t^*)}{Y_t^*} = 0{,}09 - 1{,}5 u_t\]
+A partir de la informaci\'on previa determine lo siguiente:
+
+\begin{partes}
+    \item ?`Cu\'al es la tasa de desempleo natural?
+    \item ?`En cu\'antos puntos porcentuales deber\'ia aumentar la tasa de desempleo si el Banco Central desea reducir la inflaci\'on a solo $3\%$ este a\~no? Asuma que el a\~no anterior la inflaci\'on fue $5\%$.
+    \item Si el Banco Central logra reducir la inflaci\'on a $3\%$, ?`c\'omo variar\'ia porcentualmente el PIB respecto al PIB potencial?
+\end{partes}
+%=======================================================================
+% EJERCICIO -- Expectativas Racionales y Tarifas Eléctricas
+%=======================================================================
+\ejercicio[P, Certamen 1, 2024]
+Un informe de Junio del 2024 del Banco Central de Chile detect\'o un incremento en las expectativas de inflaci\'on en cuatro d\'ecimas por encima de lo previsto para este a\~no debido al descongelamiento de las tarifas el\'ectricas. Use un modelo de OA y DA con expectativas racionales para explicar los efectos en el nivel de precios, PIB y desempleo. Asuma que no existen pol\'iticas de estabilizaci\'on y que los hogares son capaces de reducir el consumo de otros bienes para cubrir el alza de las tarifas el\'ectricas manteniendo inalterado el consumo agregado.
+
+
+
+%=======================================================================
+% EJERCICIO -- Expectativas Racionales y Credibilidad del Banco Central
+%=======================================================================
+\ejercicio[Certamen 1, 2022]
+Si los agentes econ\'omicos \textbf{tienen expectativas racionales} y conf\'ian en que el Banco Central est\'a comprometido con reducir la inflaci\'on, el costo de reducir la inflaci\'on es mucho menor que cuando los agentes econ\'omicos son esc\'epticos sobre el compromiso del Banco Central para luchar contra la inflaci\'on.
+
+\begin{partes}
+    \item Argumente si la afirmaci\'on previa es verdadera o falsa.
+    \item Si usted fuera presidente del Banco Central, ?`c\'omo podr\'ia incrementar la confianza de los agentes econ\'omicos en su gesti\'on?
+\end{partes}
+
+
+%=======================================================================
+% EJERCICIO -- Inflación, Expectativas y Retiro de Estímulo Monetario
+%=======================================================================
+\ejercicio[P, Certamen 1, 2021]
+En Chile, la inflaci\'on ha aumentado, ubic\'andose en $5{,}3\%$ anual a septiembre. El alza ha sido transversal entre los distintos \'items del IPC, reflejando presiones de demanda interna, costos y alza del tipo de cambio. Las expectativas de inflaci\'on superaron $6\%$ a fin de a\~no, sobre las proyecciones del Banco Central. En consecuencia, el Consejo del Banco Central decidi\'o adelantar el retiro del est\'imulo monetario para evitar un aumento m\'as persistente (\textbf{Fuente: Banco Central de Chile}).
+
+\begin{partes}
+    \item Utilice el modelo de DA y OA con expectativas para explicar gr\'aficamente por qu\'e la inflaci\'on se elev\'o en Chile. Muestre tambi\'en el equilibrio de largo plazo si el Banco Central no hubiese retirado el est\'imulo monetario aplicado originalmente para enfrentar la crisis del COVID-19.
+    \item Suponga que la decisi\'on del Banco Central afecta a la DA y adem\'as influye en las expectativas de inflaci\'on. Muestre c\'omo cambia la respuesta anterior en el modelo DA--OA con expectativas.
+\end{partes}
+\end{document}
