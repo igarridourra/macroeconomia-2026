@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayudantía Trabajo Semestral | Material de Ayudantía</title>
+  <meta name="description" content="Clase web: investigación empírica sobre salario mínimo y desempleo en Chile. Alcance, modelo de regresión, errores comunes y tutorial para investigar y redactar.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .cl-progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--color-warm);z-index:100}
+    .cl-hero{padding:var(--space-7) 0 var(--space-5);border-bottom:1px solid var(--color-line)}
+    .cl-hero h1{font-family:var(--font-heading);font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.15;margin:.3rem 0 .6rem}
+    .cl-hero p{color:var(--color-ink-soft);max-width:44rem;margin:.25rem 0}
+    .cl-eyebrow{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent);font-weight:600}
+    .cl-layout{display:grid;grid-template-columns:14rem minmax(0,1fr);gap:var(--space-7);padding:var(--space-6) 0 var(--space-8)}
+    .cl-toc{position:sticky;top:5rem;align-self:start;font-size:.92rem}
+    .cl-toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--color-line)}
+    .cl-toc a{display:block;padding:.4rem .9rem;margin-left:-2px;border-left:2px solid transparent;color:var(--color-ink-soft);text-decoration:none}
+    .cl-toc a:hover{color:var(--color-ink)}
+    .cl-toc a.is-active{border-left-color:var(--color-accent);color:var(--color-accent-strong);font-weight:600}
+    .cl-toc-mobile{display:none}
+    .cl-sec{scroll-margin-top:5rem;margin-bottom:var(--space-8)}
+    .cl-sec>h2{font-family:var(--font-heading);font-size:1.8rem;margin:0 0 var(--space-4);padding-bottom:.4rem;border-bottom:1px solid var(--color-line)}
+    .cl-sec h3{font-family:var(--font-heading);font-size:1.2rem;margin:var(--space-6) 0 var(--space-3)}
+    .cl-sec p,.cl-sec li{line-height:1.65}
+    .cl-num{display:inline-block;min-width:2.2rem;color:var(--color-accent);font-family:var(--font-mono);font-size:.85em}
+    .callout{border-left:4px solid var(--color-accent);background:var(--color-accent-tint);padding:var(--space-4) var(--space-5);border-radius:var(--radius-sm);margin:var(--space-4) 0}
+    .callout--warn{border-left-color:var(--color-warm);background:var(--color-warm-tint)}
+    .callout>strong:first-child{display:block;margin-bottom:.25rem}
+    .callout p,.callout ul{margin:.25rem 0}
+    .tut{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.06em;padding:.15rem .5rem;border-radius:4px;background:var(--color-warm-tint);color:var(--color-ink);border:1px solid var(--color-warm);vertical-align:middle;margin-left:.5rem}
+    .tut-banner{background:var(--color-accent-strong);color:#fff;border-radius:var(--radius);padding:var(--space-6);margin:0 0 var(--space-5)}
+    [data-theme="dark"] .tut-banner{color:var(--color-ink)}
+    .tut-banner p{margin:.3rem 0 0;opacity:.9}
+    .cl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:var(--space-4);margin:var(--space-4) 0}
+    .cl-card{background:var(--color-paper-raised);border:1px solid var(--color-line);border-radius:var(--radius);padding:var(--space-4) var(--space-5);box-shadow:var(--shadow-card)}
+    .cl-card h4{margin:0 0 .4rem;font-size:1rem;color:var(--color-accent-strong)}
+    .cl-card p{margin:.25rem 0;font-size:.95rem}
+    .cl-card code,.cl-sec code{font-family:var(--font-mono);font-size:.88em;background:var(--color-accent-tint);padding:.1rem .35rem;border-radius:4px}
+    .hyp{font-size:.9rem;color:var(--color-ink-soft)}
+    .links{list-style:none;padding:0;display:grid;gap:.4rem}
+    .links a{font-weight:600}
+    .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:var(--space-3);counter-reset:f;margin:var(--space-4) 0;padding:0;list-style:none}
+    .flow li{counter-increment:f;position:relative;background:var(--color-paper-raised);border:1px solid var(--color-line);border-radius:var(--radius);padding:var(--space-4);font-size:.93rem}
+    .flow li::before{content:counter(f);display:block;font-family:var(--font-mono);color:var(--color-warm);font-weight:700;margin-bottom:.2rem}
+    .flow li:not(:last-child)::after{content:"→";position:absolute;right:-.85rem;top:50%;transform:translateY(-50%);color:var(--color-accent);z-index:1}
+    .fm{font-family:var(--font-mono);font-size:1.05rem;color:var(--color-accent-strong);margin:.2rem 0 .5rem}
+    details.pass{background:var(--color-paper-raised);border:1px solid var(--color-line);border-radius:var(--radius);padding:var(--space-3) var(--space-5);margin:var(--space-3) 0}
+    details.pass summary{cursor:pointer;font-weight:600}
+    details.pass summary span{color:var(--color-warm);font-weight:700;margin-left:.4rem}
+    .vs{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+    .checklist{list-style:none;padding:0;display:grid;gap:.4rem}
+    .checklist label{display:flex;gap:.6rem;align-items:flex-start;cursor:pointer;line-height:1.5}
+    .checklist input{margin-top:.35rem;accent-color:var(--color-accent)}
+    .checklist input:checked+span{text-decoration:line-through;color:var(--color-ink-soft)}
+    .season{width:100%;max-width:34rem;height:auto;display:block;margin:var(--space-3) 0}
+    .mail{font-family:var(--font-mono);font-size:.9rem}
+    @media (max-width:60rem){
+      .cl-layout{grid-template-columns:1fr;gap:var(--space-4)}
+      .cl-toc{display:none}
+      .cl-toc-mobile{display:block;background:var(--color-paper-raised);border:1px solid var(--color-line);border-radius:var(--radius);padding:var(--space-3) var(--space-4)}
+      .cl-toc-mobile a{display:block;padding:.35rem 0}
+      .flow li:not(:last-child)::after{display:none}
+      .vs{grid-template-columns:1fr}
+    }
+    @media print{.cl-toc,.cl-toc-mobile,.cl-progress,.site-header,.site-footer{display:none}.cl-layout{display:block}}
+  </style>
+</head>
+<body data-page="material">
+  <div class="cl-progress" id="progress" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="site-brand" href="index.html">
+        <strong>Material de Ayudantía</strong>
+        <span>Ignacio Garrido &amp; Alex Fierro</span>
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú de navegación">☰</button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Navegación principal">
+        <ul class="site-nav__links">
+          <li><a href="index.html" data-page-link="inicio">Inicio</a></li>
+          <li><a href="material.html" data-page-link="material">Material</a></li>
+          <li><a href="videos.html" data-page-link="videos">Videos</a></li>
+          <li><a href="about.html" data-page-link="about">Sobre el proyecto</a></li>
+        </ul>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+          <span data-theme-icon aria-hidden="true">☀️</span>
+          <span data-theme-label>Claro</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="cl-hero">
+      <div class="container">
+        <a class="back-link" href="material.html">&larr; Volver a la biblioteca</a>
+        <p class="cl-eyebrow">Macroeconomía (580323) · Semestre 2026-2</p>
+        <h1>Ayudantía Trabajo Semestral</h1>
+        <p><strong>Investigación empírica: salario mínimo y desempleo en Chile.</strong></p>
+        <p>Ayudantes: Ignacio Garrido U. y Alex Fierro R. · Prof. Cristian Mardones, Ph.D. · Departamento de Ingeniería Industrial, Facultad de Ingeniería, UdeC.</p>
+      </div>
+    </section>
+
+    <div class="container cl-layout">
+      <aside>
+        <nav class="cl-toc" aria-label="Contenidos de la clase">
+          <ol>
+            <li><a href="#objetivo">1. Objetivo del trabajo</a></li>
+            <li><a href="#alcance">2. Alcance de la investigación</a></li>
+            <li><a href="#modelo">3. Modelo de regresión</a></li>
+            <li><a href="#errores">4. Errores comunes</a></li>
+            <li><a href="#tutorial">5. Tutorial: investigar y redactar</a></li>
+            <li><a href="#contacto">Consultas y contacto</a></li>
+          </ol>
+        </nav>
+        <details class="cl-toc-mobile"><summary>Contenidos de la clase</summary>
+          <a href="#objetivo">1. Objetivo del trabajo</a><a href="#alcance">2. Alcance</a><a href="#modelo">3. Modelo de regresión</a><a href="#errores">4. Errores comunes</a><a href="#tutorial">5. Tutorial</a><a href="#contacto">Contacto</a>
+        </details>
+      </aside>
+
+      <article>
+        <!-- 1 -->
+        <section class="cl-sec" id="objetivo">
+          <h2>1. Objetivo del trabajo</h2>
+          <div class="callout"><strong>Objetivo general</strong>
+            <p>Realizar una investigación empírica (con datos reales) sobre el efecto del salario mínimo en el desempleo en Chile, utilizando un modelo de regresión.</p></div>
+          <ul>
+            <li>Se trabajará con series de tiempo macroeconómicas chilenas.</li>
+            <li>El análisis incluye revisión de literatura, obtención de datos, estimación del modelo, verificación de supuestos e interpretación de resultados.</li>
+          </ul>
+        </section>
+
+        <!-- 2 -->
+        <section class="cl-sec" id="alcance">
+          <h2>2. Definir el alcance de la investigación</h2>
+
+          <h3>Revisar el estado del arte</h3>
+          <p>Consulta literatura académica actual con el objetivo de entender:</p>
+          <ul>
+            <li>Qué hipótesis se testean.</li>
+            <li>Qué variables se utilizan en los modelos.</li>
+            <li>Qué periodicidad y períodos de tiempo se utilizan.</li>
+            <li>Cuáles son las conclusiones que se suelen obtener.</li>
+          </ul>
+          <div class="callout"><strong>Fuentes recomendadas</strong>
+            <p>Utilizar la biblioteca UdeC para acceder a las bases de datos académicas solicitadas (Web of Science, Scopus, SciELO): <a href="https://udec.libguides.com/az/databases?preview=b7e833647de54ed796df4845e8de9b8d" target="_blank" rel="noopener">Bases de datos – Biblioteca UdeC</a>.</p></div>
+
+          <h3>Obtener datos</h3>
+          <p>Una vez conocidas las variables que se suelen utilizar para el análisis de desempleo, buscar en fuentes confiables. Para Chile:</p>
+          <ul class="links">
+            <li><strong>Banco Central de Chile:</strong> <a href="https://si3.bcentral.cl/siete" target="_blank" rel="noopener">Base de datos estadísticos</a></li>
+            <li><strong>INE:</strong> <a href="https://www.ine.cl/estadisticas/" target="_blank" rel="noopener">Estadísticas INE</a></li>
+            <li><strong>Banco Mundial:</strong> <a href="https://datos.bancomundial.org/" target="_blank" rel="noopener">Datos de libre acceso</a></li>
+            <li><strong>FMI (IMF):</strong> <a href="https://www.imf.org/en/Data" target="_blank" rel="noopener">IMF Data</a></li>
+          </ul>
+          <div class="cl-card"><h4>Series específicas sugeridas</h4>
+            <ul class="links">
+              <li><strong>Tasa de desempleo:</strong> <a href="https://si3.bcentral.cl/IndicadoresSiete/secure/Serie.aspx?gcode=TAS_DES_INE&amp;param=VwAuAEMAdgBMAC4AcgBkADgALQBoADIAZABfADAAMAAzADIAYQBWAGMANABIAFoAaQBUAEsANgA2AHQAOQBHAFMAQQBrAFkAJAAwAEsARgBnAEYAeQB1ADUAZgBFAFQATAAwADYAQgA0AF8ATwB0AGoAcjBVAGYASwAxAHMAOABFAGwAYwBMAHgAawBVAEsARgBlAGYAWQB1ADIANwA2AGYAVABkAGsAQQBOAEoAVQBNAEgAUwBGAHYAeABNAGEA" target="_blank" rel="noopener">Serie Desempleo – Banco Central</a></li>
+              <li><strong>Inflación (IPC):</strong> <a href="https://si3.bcentral.cl/IndicadoresSiete/secure/Serie.aspx?gcode=IPC&amp;param=UQBSAEYAYwAxAFIARABYADAALQBqAHAAWABKAHEAcQBzAHAAQgB4ADcATwBHAGIAMgBfAEwATgBOAHIAWQA1ACMAZwBsAC4AeABtAEwATQBsAHcAdQBvAGQARwBQAGUARQBvAG0ASwB4AEQAbABTAGgARgAxAGUAQgBxAHkAcwA5AG8ARQAzAGgAMQBPAFQARgBSAEwASABZAE0ARgBKAFoAMwBmAHYATgBoAGMANQBpAE8ANwBFAGMAJAA=" target="_blank" rel="noopener">Serie IPC – Banco Central</a></li>
+              <li><strong>PIB real:</strong> <a href="https://si3.bcentral.cl/IndicadoresSiete/secure/Serie.aspx?gcode=PIB_RE_EP03&amp;param=NABaAHEASAB6AFoAeABlADYALQA3AHUAZQBTAE4ATgBSAHUAZwBqAEcASQBMAFQAeQBEACQAaQBpAFYAZAAxAEUAbgBZAFgAYQBhACQAcQBlAHkAYQBaADAARAAzAEsAbAAkAGIAWABqAEoANgAuAFQAUgBPAC4ANABZAFAAOQBZAFgAbABHAE0ARgBPADgAMgBBAGIAbwA0AC4AWgBHAEYARQA5AHEAOABwAHMAYwBCAG8AeQBOAG0AdABYAEoAdQBQAEgASwB6ADMAdgBMAFkASwA4AA==" target="_blank" rel="noopener">Serie PIB – Banco Central</a></li>
+              <li><strong>Output gap:</strong> revisar pág. G II.8 del <a href="https://www.bcentral.cl/documents/33528/8620037/Capitulo%20II%20IPoM%20Septiembre%202026/b464fdd2-4aa1-a0a8-5c52-e9f9275346e0" target="_blank" rel="noopener">IPoM Septiembre 2026</a></li>
+            </ul></div>
+
+          <h3>Período de interés</h3>
+          <p>Definir el período de interés (5, 10 o 20 años) en base a los datos disponibles y las variables consideradas, intentando dentro de lo posible considerar un período amplio.</p>
+          <div class="callout callout--warn"><strong>Consideración importante</strong>
+            <p>Las dinámicas macroeconómicas cambian constantemente; dependiendo del período de estudio, tus resultados pueden cambiar considerablemente.</p></div>
+
+          <h3>Definir la pregunta o hipótesis</h3>
+          <p>Define qué pregunta o hipótesis buscarás responder o probar. Intenta, dentro de lo posible, ser original.</p>
+          <div class="callout"><strong>Ejemplos genéricos</strong>
+            <ul><li>Efecto del salario mínimo en la región X de Chile.</li><li>¿Cuál grupo demográfico es el más afectado por el salario mínimo?</li><li>¿Es el estudio X sobre el desempleo, realizado en el país Y, aplicable a Chile?</li></ul></div>
+        </section>
+
+        <!-- 3 -->
+        <section class="cl-sec" id="modelo">
+          <h2>3. Modelo de regresión</h2>
+          <h3>Supuestos a verificar</h3>
+          <p>Para que los estimadores de Mínimos Cuadrados Ordinarios (MCO) sean óptimos (insesgados, consistentes y eficientes), deben cumplirse los supuestos clásicos del modelo de regresión lineal. Cada supuesto tiene su test:</p>
+          <div class="cl-grid">
+            <div class="cl-card"><h4><span class="cl-num">3.1</span>Normalidad de los residuos</h4>
+              <p><strong>Test de Jarque–Bera.</strong> Compara la asimetría (<em>skewness</em>) y la curtosis de la muestra con las de una normal teórica.</p>
+              <p class="hyp"><strong>H₀:</strong> los residuos se distribuyen normalmente.<br><strong>H₁:</strong> no se distribuyen normalmente.</p></div>
+            <div class="cl-card"><h4><span class="cl-num">3.2</span>Ausencia de multicolinealidad</h4>
+              <p><strong>Factor de Inflación de la Varianza (VIF).</strong> Mide cuánto se infla la varianza de un coeficiente por la correlación lineal entre las variables explicativas.</p>
+              <p class="hyp"><strong>VIF = 1:</strong> sin multicolinealidad.<br><strong>1 &lt; VIF &lt; 5:</strong> moderada, generalmente sin gran preocupación.<br><strong>VIF ≥ 5:</strong> alta.</p></div>
+            <div class="cl-card"><h4><span class="cl-num">3.3</span>Ausencia de autocorrelación</h4>
+              <p><strong>Test LM de Breusch–Godfrey.</strong> Detecta autocorrelación de orden <em>p</em> en los residuos. Es más general que Durbin-Watson: permite varios rezagos y funciona con regresores estocásticos.</p>
+              <p class="hyp"><strong>H₀:</strong> no hay autocorrelación hasta el orden <em>p</em>.<br><strong>H₁:</strong> existe autocorrelación de algún orden hasta <em>p</em>.</p></div>
+            <div class="cl-card"><h4><span class="cl-num">3.4</span>Homocedasticidad</h4>
+              <p><strong>Test de White.</strong> Evalúa si la varianza de los residuos es constante frente a la alternativa de que dependa de las explicativas, sus cuadrados o productos cruzados.</p>
+              <p class="hyp"><strong>H₀:</strong> los residuos son homocedásticos.<br><strong>H₁:</strong> son heterocedásticos.</p></div>
+          </div>
+
+          <h3><span class="cl-num">3.5</span>Medidas de desempeño del modelo</h3>
+          <p>Métricas para evaluar la calidad del ajuste:</p>
+          <div class="cl-grid">
+            <div class="cl-card"><h4>R²</h4></div><div class="cl-card"><h4>R² ajustado</h4></div>
+            <div class="cl-card"><h4>Criterios AIC / BIC</h4></div><div class="cl-card"><h4>Error estándar de la regresión</h4></div>
+          </div>
+          <p class="hyp">Entre otros.</p>
+
+          <h3><span class="cl-num">3.6</span>Interpretación económica de los coeficientes</h3>
+          <p>Depende de la especificación funcional del modelo:</p>
+          <div class="cl-grid">
+            <div class="cl-card"><h4>Nivel–Nivel</h4><div class="fm">dY/dX = β</div><p>Un aumento de 1 unidad en X genera un cambio de β unidades en Y.</p></div>
+            <div class="cl-card"><h4>Nivel–Log</h4><div class="fm">dY/d(ln X) = β</div><p>Un aumento de 1 % en X genera un cambio de β/100 unidades en Y.</p></div>
+            <div class="cl-card"><h4>Log–Nivel</h4><div class="fm">d(ln Y)/dX = β</div><p>Un aumento de 1 unidad en X genera un cambio de (β × 100) % en Y.</p></div>
+            <div class="cl-card"><h4>Log–Log (elasticidad)</h4><div class="fm">d(ln Y)/d(ln X) = β</div><p>Un aumento de 1 % en X genera un cambio de β % en Y.</p></div>
+          </div>
+        </section>
+
+        <!-- 4 -->
+        <section class="cl-sec" id="errores">
+          <h2>4. Errores comunes</h2>
+          <h3><span class="cl-num">4.1</span>Variables nominales vs. reales</h3>
+          <p>Al utilizar variables monetarias (PIB, sueldo, interés), hay que elegir con cuidado entre nominales y reales.</p>
+          <div class="callout callout--warn"><strong>Diferencia clave</strong>
+            <ul><li><strong>Variables nominales</strong> = efecto de la variable + efecto de la inflación.</li><li><strong>Variables reales</strong> = efecto de la variable.</li></ul></div>
+          <p>Usar una variable nominal cuando se requiere una real (o viceversa) puede sesgar completamente los resultados de la regresión.</p>
+
+          <h3><span class="cl-num">4.2</span>Estacionalidad</h3>
+          <p>Es muy frecuente que las series de tiempo históricas tengan algún grado de estacionalidad. Hay que verificar que no exista y, si existe, tomar medidas correctivas (por ejemplo, desestacionalización o variables <em>dummy</em> estacionales).</p>
+          <svg class="season" viewBox="0 0 400 150" role="img" aria-label="Ilustración de una serie con patrón estacional repetido y tendencia leve">
+            <g stroke="var(--color-line)" stroke-width="1"><line x1="10" y1="135" x2="395" y2="135"/><line x1="10" y1="10" x2="10" y2="135"/></g>
+            <polyline fill="none" stroke="var(--color-accent)" stroke-width="2.5" stroke-linejoin="round" points="10,100 34,60 58,95 82,125 105,98 129,56 153,90 177,119 200,93 224,52 248,85 272,113 295,88 319,48 343,80 367,108 390,84"/>
+            <text x="12" y="147" font-size="10" fill="var(--color-ink-soft)">Ilustración: patrón que se repite cada año</text>
+          </svg>
+
+          <h3><span class="cl-num">4.3</span>Otros errores frecuentes</h3>
+          <ul>
+            <li>No incluir los resultados de los tests estadísticos en el informe.</li>
+            <li>Considerar variables sin respaldo teórico o empírico.</li>
+            <li>Mezclar datos de distintos períodos (por ejemplo, inflación de 2010 con desempleo de 2020).</li>
+            <li>Utilizar como predictores variables que forman parte de la definición de la variable objetivo.</li>
+          </ul>
+
+          <div class="cl-card"><h4>Checklist rápido (marca lo que ya revisaste)</h4>
+            <ul class="checklist" id="checklist">
+              <li><label><input type="checkbox"><span>Variables monetarias: nominales o reales según corresponda.</span></label></li>
+              <li><label><input type="checkbox"><span>Revisé estacionalidad y corregí si existía.</span></label></li>
+              <li><label><input type="checkbox"><span>Todas las series cubren el mismo período.</span></label></li>
+              <li><label><input type="checkbox"><span>Ningún predictor es parte de la definición de la variable objetivo.</span></label></li>
+              <li><label><input type="checkbox"><span>Cada variable tiene respaldo teórico o empírico.</span></label></li>
+              <li><label><input type="checkbox"><span>Verifiqué normalidad, multicolinealidad, autocorrelación y homocedasticidad.</span></label></li>
+              <li><label><input type="checkbox"><span>Incluí los resultados de los tests en el informe.</span></label></li>
+            </ul></div>
+        </section>
+
+        <!-- 5 -->
+        <section class="cl-sec" id="tutorial">
+          <div class="tut-banner"><span class="tut">TUTORIAL</span>
+            <h2 style="border:0;margin:.4rem 0 0;padding:0;color:inherit">5. Cómo investigar y redactar</h2>
+            <p>Revisión de literatura · Lectura de papers · Redacción · Uso responsable de la IA</p></div>
+
+          <h3>Revisión de literatura</h3>
+          <p><span class="cl-num">5.1</span><strong>La regla de partida.</strong></p>
+          <div class="callout callout--warn"><strong>Regla de oro</strong><p>No abusar de la IA. Dediquemos <strong>al menos 30–40 minutos</strong> a buscar papers nosotros mismos.</p></div>
+          <ul>
+            <li>¿Cómo lo hacemos? <strong>Scopus</strong> nos puede ayudar.</li>
+            <li>Se puede buscar por <strong>autor</strong>, <strong>keywords</strong>, <strong>revistas</strong>, etc.</li>
+            <li>Acceso a través de la biblioteca UdeC (ver «Revisar el estado del arte»).</li>
+          </ul>
+
+          <p><span class="cl-num">5.2</span><strong>Ojo con las revistas.</strong></p>
+          <div class="callout callout--warn"><strong>Cuidado al buscar por keywords</strong><p>Muchas revistas participan en esta base de datos, pero <strong>no todas tienen la misma calidad</strong>. Se diferencian principalmente por su <strong>factor de impacto</strong>: mientras más alto, más confiable y de mejor calidad es la revista.</p></div>
+          <div class="cl-card"><h4>¿Dónde ver el impacto de una revista?</h4>
+            <ul><li>En Scopus: <strong>CiteScore</strong>, <strong>SJR</strong> y <strong>cuartil</strong> (Q1 = mejor posicionadas de su área).</li><li>El <strong>factor de impacto</strong> (JIF) propiamente tal proviene de Web of Science (JCR).</li><li>Comparar revistas siempre <strong>dentro de la misma área</strong>.</li></ul></div>
+
+          <p><span class="cl-num">5.3</span><strong>Define el área y elige las revistas.</strong> Es misión de ustedes definir el <strong>área</strong> de la investigación y buscar qué <strong>revistas</strong> son de interés en esa área, revisando su impacto.</p>
+          <div class="callout callout--warn"><strong>¿Y la IA?</strong><p>La IA <strong>no va a discernir entre revistas</strong>, a menos que se lo especifiquemos con un prompt extremadamente detallado («tipo biblia»).</p></div>
+
+          <p><span class="cl-num">5.4</span><strong>Criterios para elegir papers.</strong></p>
+          <ol class="flow">
+            <li><strong>Definir el área</strong> y las keywords</li>
+            <li><strong>Elegir revistas</strong> de interés y alto impacto</li>
+            <li><strong>Contexto similar</strong> al de nuestro trabajo</li>
+            <li><strong>Lo más reciente</strong></li>
+          </ol>
+          <ul><li><strong>Contextos similares:</strong> preferir siempre papers que trabajen en contextos parecidos al nuestro.</li><li><strong>Lo más reciente:</strong> ya toma lo antiguo como base y puede darnos ideas nuevas.</li></ul>
+
+          <p><span class="cl-num">5.5</span><strong>Paso a paso en Scopus.</strong></p>
+          <ol>
+            <li>Entrar a Scopus desde la biblioteca UdeC.</li>
+            <li><strong>Buscar documentos</strong> por título, abstract y keywords. Ejemplo: <code>TITLE-ABS-KEY("generative AI" AND productivity AND labor)</code></li>
+            <li><strong>Refinar resultados</strong> (panel izquierdo): año, área temática, tipo de documento y <strong>revista</strong> (<em>Source title</em>).</li>
+            <li><strong>Ordenar</strong> por más recientes o por más citados.</li>
+            <li>Abrir un paper y mirar <strong>«Cited by»</strong>: los trabajos posteriores que lo toman de base.</li>
+            <li>Anotar las revistas que más aparecen y revisar su ranking.</li>
+          </ol>
+
+          <p><span class="cl-num">5.6</span><strong>Ranking de revistas en Scimago</strong> (scimagojr.com → Journal Rankings).</p>
+          <ol>
+            <li>Elegir el <strong>área</strong> (p. ej., <em>Economics, Econometrics and Finance</em>) y la <strong>categoría</strong> (p. ej., <em>Economics and Econometrics</em>).</li>
+            <li>Elegir el año y <strong>ordenar por SJR</strong>.</li>
+            <li>Mirar el <strong>cuartil</strong>: Q1 es el 25 % superior de su categoría.</li>
+            <li>Buscar una revista por nombre para ver su ficha: SJR, cuartil y h-index.</li>
+          </ol>
+          <div class="callout callout--warn"><strong>Dos cosas que recordar</strong><ul><li>El SJR se calcula con datos de Scopus.</li><li>Comparar siempre <strong>dentro de la misma categoría</strong>: una revista puede ser Q1 en una y Q2 en otra.</li></ul></div>
+          <p class="hyp">Ejemplo: <em>Quarterly Journal of Economics</em> → Q1 en <em>Economics and Econometrics</em>.</p>
+
+          <p><span class="cl-num">5.7</span><strong>Ejemplo en vivo: un tema en tendencia.</strong> Ejercicio guiado con un tema <strong>totalmente distinto</strong> al del ramo:</p>
+          <div class="callout"><strong>IA generativa y trabajo: ¿cambia la productividad?</strong>
+            <ol><li>Definir el área y las keywords (<em>generative AI</em>, <em>productivity</em>, <em>labor</em>).</li><li>Buscar en Scopus y ver en qué revistas se publica más sobre el tema.</li><li>Elegir un paper: Brynjolfsson, Li &amp; Raymond (2025), <em>Quarterly Journal of Economics</em>.</li><li>Revisar su revista en Scimago (cuartil y SJR) y sus citas («Cited by»).</li></ol></div>
+          <div class="callout callout--warn"><strong>Ojo</strong><p>Ese paper tiene 54 páginas: no se lee, se escanea. Más adelante le haremos la primera pasada.</p></div>
+
+          <h3>Cómo abordar un paper</h3>
+          <p><span class="cl-num">5.8</span>Un paper no es una novela: <strong>no se lee de principio a fin</strong>, se escanea por capas. Despliega cada pasada:</p>
+          <details class="pass" open><summary>1ª pasada <span>5–10 min</span> — ¿De qué trata?</summary>
+            <ol><li><strong>Título y abstract:</strong> dan la pregunta, el método y el resultado en un párrafo.</li><li><strong>Introducción</strong> (sobre todo el último párrafo): casi siempre dicen «en este paper hacemos X y encontramos Y», y cuál es su aporte frente a lo que ya existía.</li><li><strong>Conclusiones:</strong> confirman lo que prometió el abstract y suelen traer las limitaciones.</li><li><strong>Figuras, tablas y sus títulos:</strong> muchas veces el paper entero se entiende mirando los gráficos y la tabla principal de resultados.</li></ol>
+            <div class="callout callout--warn"><strong>Si no se puede responder lo básico</strong><p>O el paper no sirve, o está mal escrito. En ambos casos ya nos ahorramos una hora.</p></div></details>
+          <details class="pass"><summary>2ª pasada <span>30–60 min</span> — ¿Es creíble y me sirve?</summary>
+            <p>Leer método y resultados con más cuidado, sin atascarse en cada ecuación. En trabajos empíricos, fijarse en:</p>
+            <ul><li>Cómo identifican el efecto (¿causal o solo correlación?).</li><li>Cuál es la muestra.</li><li>Qué pruebas de robustez hacen.</li></ul>
+            <p><strong>Hábitos que ayudan:</strong></p>
+            <ul><li>Escribir un resumen de 3–4 líneas con <strong>sus propias palabras</strong>. Si no se puede, aún no se entendió.</li><li>Leer con una pregunta en mente.</li><li>Dejar para después la revisión de literatura del paper y las secciones técnicas pesadas.</li><li>Para entrar a un tema nuevo, partir por un paper de revisión (<em>survey</em>).</li></ul></details>
+          <details class="pass"><summary>3ª pasada <span>solo si es clave</span> — Lectura profunda</summary>
+            <p>Implica seguir la lógica de punta a punta, replicar los pasos o encontrar dónde podría fallar.</p></details>
+          <p class="hyp">Basado en: Keshav, S. (2007). <em>How to Read a Paper</em>. ACM SIGCOMM Computer Communication Review, 37(3), 83–84.</p>
+
+          <p><span class="cl-num">5.11</span><strong>Actividad en clase: primera pasada.</strong> Paper elegido: <strong>Brynjolfsson, Li &amp; Raymond (2025), <em>QJE</em></strong> (54 págs.: solo primera pasada, <strong>5–10 min</strong>). <strong>Antes de abrirlo, adivinen:</strong> ¿cuánto cambió la productividad? ¿Quién se beneficia más?</p>
+          <div class="cl-grid">
+            <div class="cl-card"><h4>1. ¿Cuál es la pregunta?</h4></div>
+            <div class="cl-card"><h4>2. ¿Qué datos o método usan?</h4></div>
+            <div class="cl-card"><h4>3. ¿Qué encontraron?</h4></div>
+            <div class="cl-card"><h4>4. ¿Por qué importa?</h4></div>
+          </div>
+          <p>Cierre: resumen de 3–4 líneas con nuestras propias palabras y lo compartimos.</p>
+
+          <h3>Redacción</h3>
+          <p><span class="cl-num">5.12</span><strong>Cómo debe ser y cómo mejorarla.</strong></p>
+          <div class="vs">
+            <div class="cl-card"><h4>Una buena redacción es…</h4><ul><li><strong>Limpia.</strong></li><li>No repite ideas ni las reescribe con otras palabras.</li><li>No marea.</li><li>No confunde.</li></ul></div>
+            <div class="cl-card"><h4>¿Cómo mejorarla?</h4><ul><li>Tomarse el tiempo de <strong>escribir a mano</strong> e ir mejorando.</li><li>Leerlo una y otra vez.</li><li>Preguntarle a un externo si entiende la idea.</li></ul></div>
+          </div>
+          <div class="callout callout--warn"><strong>Recordar</strong><p>La aprobación va de acuerdo, directamente, con la <strong>calidad de la escritura</strong>.</p></div>
+
+          <p><span class="cl-num">5.13</span><strong>Redacción e IA: no se arriesguen.</strong> Aquí lo repito: <strong>no abusar de la IA</strong>.</p>
+          <ol><li><strong>Se nota.</strong></li><li><strong>Los profes lo notan</strong>, y más hoy, donde todo se escribe con IA.</li></ol>
+          <div class="callout callout--warn"><strong>Conclusión</strong><p>No se arriesguen a descuentos innecesarios.</p></div>
+
+          <h3>Uso responsable de la IA</h3>
+          <p><span class="cl-num">5.14</span>Cuando decimos «ocupen la IA pero no abusen», es <strong>literal</strong>.</p>
+          <div class="vs">
+            <div class="callout callout--warn" style="margin:0"><strong>NO</strong><ul><li>Pedirle a Claude, ChatGPT o Gemini que <strong>les haga el trabajo</strong>.</li><li>Reemplazar con IA la búsqueda de papers (5.1) o la redacción (5.12).</li></ul></div>
+            <div class="callout" style="margin:0"><strong>SÍ</strong><ul><li>Que los ayude a <strong>dividir las tareas</strong>.</li><li>Que los ayude a <strong>organizarse</strong>.</li><li>Siempre en bien del trabajo, del desarrollo y del equipo.</li></ul></div>
+          </div>
+
+          <p style="margin-top:var(--space-5)"><span class="cl-num">5.15</span><strong>Lo bueno que puede aportar la IA.</strong> Proporciona muy buenas herramientas:</p>
+          <ul>
+            <li><strong>Evaluar ideas</strong> con cierto nivel de profundidad, lo que puede guiarnos sobre qué caminos tomar.</li>
+            <li><strong>Realizar análisis estadísticos</strong> para quienes no desean incursionar en la programación, en la estadística o en el ML básico.</li>
+            <li>Es <strong>amigable</strong>: permite que todos participen de todas las actividades del trabajo.</li>
+          </ul>
+          <div class="callout callout--warn"><strong>Eso sí</strong><p>Entender y poder explicar cada resultado que la IA entregue: los supuestos y tests de las secciones anteriores siguen siendo responsabilidad de ustedes.</p></div>
+        </section>
+
+        <!-- Contacto -->
+        <section class="cl-sec" id="contacto">
+          <h2>Consultas y contacto</h2>
+          <p><strong>¡Muchas gracias por su atención!</strong> ¿Preguntas, dudas o consultas sobre el trabajo semestral?</p>
+          <div class="cl-grid">
+            <div class="cl-card"><h4>Ignacio Garrido U.</h4><p>Correo: <a class="mail" href="mailto:igarrido2017@udec.cl">igarrido2017@udec.cl</a></p></div>
+            <div class="cl-card"><h4>Alex Fierro R.</h4><p>Correo: <a class="mail" href="mailto:afierro2022@udec.cl">afierro2022@udec.cl</a></p></div>
+          </div>
+          <p class="hyp">Macroeconomía (580323) | Departamento de Ingeniería Industrial | UdeC</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>
+        <p class="site-footer__brand">Material de Ayudantía</p>
+        <p class="site-footer__meta">Creado por <strong>Ignacio Garrido &amp; Alex Fierro</strong> para el curso de Macroeconomía (Universidad de Concepción, semestre 2026-2), <span data-current-year>2026</span>.</p>
+      </div>
+      <ul class="site-footer__links">
+        <li><a href="https://github.com/igarridourra/macroeconomia-2026" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="mailto:igarrido2017@udec.cl">Correo</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+  (function () {
+    "use strict";
+    var bar = document.getElementById("progress");
+    function onScroll() {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    var links = document.querySelectorAll(".cl-toc a");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          links.forEach(function (a) {
+            a.classList.toggle("is-active", a.getAttribute("href") === "#" + e.target.id);
+          });
+        });
+      }, { rootMargin: "-20% 0px -70% 0px" });
+      document.querySelectorAll(".cl-sec").forEach(function (s) { io.observe(s); });
+    }
+
+    var KEY = "clase-ts-checklist";
+    var boxes = document.querySelectorAll("#checklist input");
+    try {
+      var saved = JSON.parse(window.localStorage.getItem(KEY) || "[]");
+      boxes.forEach(function (b, i) { b.checked = !!saved[i]; });
+    } catch (err) { /* sin almacenamiento: se usa solo en esta visita */ }
+    boxes.forEach(function (b) {
+      b.addEventListener("change", function () {
+        try {
+          window.localStorage.setItem(KEY, JSON.stringify(Array.prototype.map.call(boxes, function (x) { return x.checked; })));
+        } catch (err) { /* ignorar */ }
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

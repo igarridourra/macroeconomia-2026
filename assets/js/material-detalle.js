@@ -10,6 +10,7 @@
   var PREVIEWABLE_KEYS = ["pdf", "listado", "ppt", "pauta"];
 
   var FORMAT_ACTIONS = {
+    pagina: [{ label: "Abrir clase en la web", primary: true }],
     pdf: [{ label: "Ver PDF", primary: true }, { label: "Descargar PDF", primary: false }],
     ppt: [{ label: "Ver presentación", primary: true }, { label: "Descargar presentación", primary: false }],
     pauta: [{ label: "Ver pauta", primary: true }, { label: "Descargar pauta", primary: false }],
@@ -39,7 +40,7 @@
       FORMAT_ACTIONS[key].forEach(function (action, index) {
         var isViewAction = isPreviewable && index === 0;
         var classes = "btn " + (action.primary ? "btn-primary" : "btn-secondary");
-        var target = isViewAction ? "" : ' download';
+        var target = (isViewAction || key === "pagina") ? "" : ' download';
         var dataAttr = isViewAction ? ' data-preview-key="' + key + '"' : "";
         buttons.push(
           '<a class="' + classes + '"' + dataAttr + ' href="' + AyudantiaData.escapeHTML(files[key]) + '"' + target + ">" +

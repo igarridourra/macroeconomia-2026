@@ -20,6 +20,7 @@ var AyudantiaData = (function () {
   };
 
   var FORMAT_LABELS = {
+    pagina: "WEB",
     pdf: "PDF",
     latex: "LaTeX",
     source: "ZIP",

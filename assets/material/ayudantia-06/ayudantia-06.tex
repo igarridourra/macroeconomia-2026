@@ -1,0 +1,271 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{enumitem}
+
+\parindent = 0cm
+\setlist{itemsep=0.6em}
+
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,latexsym,cancel}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\LVert#1\RVert}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+
+% Márgenes limpios y compactos para todo el documento
+\usepackage[lmargin=2cm,rmargin=2cm,top=2cm,bottom=2.5cm]{geometry}
+\usepackage{xspace}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+% ======================================================================
+%  DEFINICIÓN DEL TÍTULO DEL TEMA
+% ======================================================================
+\newcommand{\titulotema}{Inflación, desempleo y modelo renta-gasto}
+
+% ======================================================================
+%  CONFIGURACIÓN DE ENCABEZADOS Y PIES DE PÁGINA (fancyhdr)
+% ======================================================================
+\usepackage{fancyhdr}
+
+% --- Estilo general: desde la página 2 en adelante ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Macroeconomía (580323)}
+\fancyhead[R]{\titulotema}
+\renewcommand{\headrulewidth}{0.5pt} % Sin línea superior
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{Semestre 2026-2}
+\fancyfoot[L]{CMP/IGU/AFR}
+\renewcommand{\footrulewidth}{0.5pt}
+
+% --- Estilo exclusivo de la Página 1 ---
+\fancypagestyle{primerapagina}{%
+  \fancyhf{}
+  \fancyhead[L]{\small FACULTAD DE INGENIERÍA\\DEPTO DE INGENIERÍA INDUSTRIAL \\ MACROECONOMÍA (580323)}
+  \fancyhead[R]{\includegraphics[scale=0.13]{escudoudec.jpg}}
+  \renewcommand{\headrulewidth}{0.9pt}
+  \fancyfoot[C]{\thepage}
+  \fancyfoot[R]{Semestre 2026-2}
+  \fancyfoot[L]{CMP/IGU/AFR}
+  \renewcommand{\footrulewidth}{0.5pt}
+}
+
+% Enlaces
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+% Paquete de recuadros avanzados
+\usepackage[many]{tcolorbox}
+
+% ======================================================================
+%  DEFINICIÓN DEL RECUADRO CON BORDES REDONDEADOS Y BARRA AZUL
+% ======================================================================
+\definecolor{headblue}{RGB}{0, 15, 137}      
+\definecolor{frameblue}{RGB}{41, 98, 153}     
+\definecolor{bgsoftblue}{RGB}{247, 249, 253}  
+
+\newtcolorbox{solucion}[1][]{%
+    enhanced,
+    breakable,
+    colback=bgsoftblue,
+    colframe=frameblue!75!black,
+    colbacktitle=headblue,
+    coltitle=white,
+    fonttitle=\bfseries\normalsize,
+    title={Solución:\ifx&#1&\else\ \normalfont\small(#1)\fi},
+    arc=2.5mm,
+    boxrule=0.7pt,
+    titlerule=0pt,
+    toptitle=1.5mm,
+    bottomtitle=1.5mm,
+    left=4mm, right=4mm, top=3mm, bottom=3mm,
+    before skip=4mm,
+    after skip=4mm,
+    skin first=enhanced,
+    skin middle=enhanced,
+    skin last=enhanced,
+    arc=2.5mm,
+    bottomrule=0.7pt,
+    toprule=0.7pt
+}
+
+\newenvironment{solucionpartes}{%
+    \begin{enumerate}[label=\textbf{(\alph*)}, leftmargin=1.2cm, itemsep=0.5em]
+}{%
+    \end{enumerate}
+}
+
+\newcommand{\checkformula}[1]{\noindent\textbf{Chequeo de consistencia: } #1 \quad \checkmark}
+
+% ======================================================================
+%  COMANDOS PERSONALIZADOS
+% ======================================================================
+
+\newcounter{ejercicio}
+\newcommand{\ejercicio}[1][]{%
+  \stepcounter{ejercicio}%
+  \bigskip\noindent\textbf{Ejercicio \arabic{ejercicio}\ifx&#1&\relax.\else\ (#1).\fi}\ %
+}
+
+\newenvironment{partes}
+  {\begin{enumerate}[label=(\alph*), leftmargin=1.0cm]}
+  {\end{enumerate}}
+
+\newenvironment{tabladatos}
+  {\begin{center}}
+  {\end{center}}
+
+\newenvironment{recuadro}[1]{%
+  \noindent\colorbox{black!8}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \centering\Large\bfseries #1
+    }%
+  }\par\vspace{4mm}\noindent
+}{\par}
+
+\begin{document}
+\thispagestyle{primerapagina}
+
+\vspace*{0.05cm}
+
+\begin{center}
+  {\Large \textbf{Listado 6 -- Macroeconomía (580323)}}\\[0.15cm]
+  {\large \titulotema}
+\end{center}
+
+\bigskip
+
+\textbf{Profesor:} Cristian Mardones, Ph.D. \quad
+\textbf{Ayudantes:} Ignacio Garrido U, Alex Fierro R.
+
+\bigskip
+%=======================================================================
+% EJERCICIO -- Tasa Natural de Desempleo
+%=======================================================================
+\ejercicio[P]
+Analice c\'omo y en qu\'e medida los siguientes cambios  afectar\'ian la tasa natural de desempleo.
+
+\begin{partes}
+    \item Eliminaci\'on de los sindicatos.
+    \item Incremento de la participaci\'on de los adolescentes en el mercado laboral.
+    \item Fluctuaciones significativas en el nivel de la demanda agregada.
+    \item Aumento de los beneficios por desempleo.
+    \item Abolici\'on de los salarios m\'inimos.
+
+\end{partes}
+
+%=======================================================================
+% EJERCICIO 1 -- Costos de la Inflación Perfectamente Anticipada
+%=======================================================================
+\ejercicio
+?`Cu\'ales son los costos de una inflaci\'on perfectamente anticipada? ?`Estos costos cambian seg\'un la tasa de inflaci\'on?
+
+%=======================================================================
+% EJERCICIO 2 -- Costos de la Inflación Imperfectamente Anticipada
+%=======================================================================
+\ejercicio[P]
+?`Cu\'ales son los costos de una inflaci\'on imperfectamente anticipada? Anal\'icelos en detalle. ?`Qui\'en pierde y qui\'en gana cuando la inflaci\'on es mayor que la esperada?
+
+%=======================================================================
+% EJERCICIO 3 -- Indexación de Salarios y Precios
+%=======================================================================
+\ejercicio
+?`El pa\'is debe indexar salarios y precios? Desglose las ventajas y desventajas del plan. ?`Su respuesta ser\'ia diferente si esperara que la naci\'on pasara por una etapa de inflaci\'on extremadamente alta (digamos, de $300\%$)?
+
+
+%=======================================================================
+% EJERCICIO -- Metas de Inflación y Nivel Óptimo
+%=======================================================================
+\ejercicio[P]
+Algunos dicen que debido a que la inflaci\'on puede reducirse a largo plazo sin que aumente el desempleo, entonces deber\'iamos disminuirla a cero. Otros creen que nuestra meta debe ser una tasa constante de inflaci\'on de, digamos, $3\%$. ?`Cu\'ales son las bondades y los inconvenientes de los dos argumentos? Explique por qu\'e la teor\'ia macroecon\'omica recomienda mantener un cierto nivel positivo de inflaci\'on en la econom\'ia en lugar de fijar una meta de cero absoluto.
+
+
+
+
+%=======================================================================
+% EJERCICIO 1 -- Modelo sin Gobierno
+%=======================================================================
+\ejercicio[P]
+En este problema investigamos un ejemplo del modelo renta-gasto en ausencia del Estado. Suponga que la funci\'on de consumo est\'a dada por $C = 100 + 0{,}8Y$, mientras que la inversi\'on est\'a dada por $I = 50$. Considerar que es una economía cerrada.
+
+\begin{partes}
+    \item ?`Cu\'al es el nivel de equilibrio del ingreso en este caso?
+    \item ?`Cu\'al es el nivel de ahorro en equilibrio?
+    \item Si por cualquier motivo la producci\'on se encuentra en un nivel de $800$, ?`cu\'al ser\'a el nivel de acumulaci\'on involuntaria de existencias?
+    \item Si $I$ sube a $100$, ?`cu\'al es el efecto en el ingreso de equilibrio?
+    \item ?`Cu\'al es aqu\'i el valor del multiplicador, $\alpha$?
+    \item Trace un diagrama para indicar los equilibrios de a) y d).
+\end{partes}
+
+%=======================================================================
+% EJERCICIO -- Variación de la Propensión Marginal a Consumir
+%=======================================================================
+\ejercicio[P]
+Suponga que la conducta del consumo cambia en el problema anterior, de tal manera que $C = 100 + 0{,}9Y$ y que la inversi\'on sigue siendo igual a $50$. Considerar que es una economía cerrada.
+
+\begin{partes}
+    \item ?`Es el nivel de la renta de equilibrio mayor o menor que en el problema anterior? Calcule el nuevo nivel de equilibrio, $Y'$, para verificarlo.
+    \item Ahora suponga que aumenta la inversi\'on a $I = 100$, exactamente igual que en el inciso d) del problema anterior. ?`Cu\'al es la nueva renta de equilibrio?
+    \item ?`Afecta a $Y$ esta variaci\'on del gasto de inversi\'on m\'as que en el problema anterior o menos? ?`Por qu\'e?
+    \item Represente gr\'aficamente la variaci\'on de la renta de equilibrio en este caso.
+\end{partes}
+
+%=======================================================================
+% EJERCICIO -- Análisis Gráfico de Demanda Agregada
+%=======================================================================
+\ejercicio[P]
+Suponga que una econom\'ia (cerrada y sin gobierno) se representa en el siguiente gr\'afico.
+
+\begin{center}
+\begin{tikzpicture}[x=0.0075cm, y=0.0045cm, font=\footnotesize]
+    % Ejes cartesianos
+    \draw[-stealth, line width=0.8pt] (0,0) -- (1050,0) node[below=4pt] {$Y$};
+    \draw[-stealth, line width=0.8pt] (0,0) -- (0,1050) node[left=4pt] {$DA$};
+
+    % Ticks eje X
+    \foreach \x in {0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}
+        \draw (\x, 12) -- (\x, -12) node[below] {\scalebox{0.75}{\x}};
+
+    % Ticks eje Y
+    \foreach \y in {0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000}
+        \draw (12, \y) -- (-12, \y) node[left] {\scalebox{0.75}{\y}};
+
+    % Línea de 45 grados (DA = Y)
+    \draw[line width=0.9pt, dashed, blue!70!black] (0,0) -- (1000,1000) node[above right] {$DA=Y$};
+    \fill[blue!70!black] (0,0) circle (2pt);
+    \fill[blue!70!black] (1000,1000) circle (2pt);
+
+    % Curva de Inversión: I = 150 (cian)
+    \draw[line width=1pt, cyan] (0,150) -- (900,150) node[right=4pt, text=black] {$I$};
+    \node[cyan] at (0,150) {$\times$};
+    \node[cyan] at (900,150) {$\times$};
+
+    % Curva de Consumo: C = 100 + c1*Yd (amarillo/dorado)
+    \draw[line width=1pt, yellow!75!black] (0,100) -- (900,650) node[right=4pt, text=black] {$\bar{C} + c_1 Y_d$};
+    \node[yellow!75!black] at (0,100) {$\blacktriangle$};
+    \node[yellow!75!black] at (900,650) {$\blacktriangle$};
+
+    % Curva DA total: DA = Abar + c1*Y - bi (magenta)
+    \draw[line width=1pt, magenta] (0,250) -- (900,800) node[right=4pt, text=black] {$\bar{A} + c_1 Y - bi$};
+    \fill[magenta] (0,250) +(-2pt,-2pt) rectangle +(2pt,2pt);
+    \fill[magenta] (900,800) +(-2pt,-2pt) rectangle +(2pt,2pt);
+
+
+\end{tikzpicture}
+\end{center}
+
+\begin{partes}
+    \item Explique detenidamente qu\'e pasar\'ia si el ingreso fuera de $400$.
+    \item Diga cu\'al es el nivel de consumo de equilibrio.
+    \item Obtenga una expresi\'on algebraica para el ingreso de equilibrio.
+\end{partes}
+\end{document}

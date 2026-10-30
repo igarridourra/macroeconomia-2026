@@ -83,6 +83,32 @@
       "latex": "assets/material/ayudantia-05/ayudantia-05.tex",
       "ppt": "assets/material/ayudantia-05/PPT-ayudantia-05.pdf"
     }
+  },
+  {
+    "id": "trabajo-semestral",
+    "title": "Ayudantía Trabajo Semestral — Salario mínimo y desempleo en Chile",
+    "description": "Clase en formato web: alcance de la investigación, modelo de regresión y supuestos, errores comunes y tutorial para investigar y redactar.",
+    "category": "Ayudantías",
+    "date": "2026-10-29",
+    "authors": ["Ignacio Garrido", "Alex Fierro"],
+    "topics": ["Trabajo semestral", "Regresión", "Series de tiempo", "Revisión de literatura"],
+    "files": {
+      "pagina": "clase-trabajo-semestral.html"
+    }
+  },
+  {
+    "id": "ayudantia-06",
+    "title": "Ayudantía 06 — Inflación, desempleo y modelo renta-gasto",
+    "description": "Inflación, desempleo y modelo renta-gasto.",
+    "category": "Ayudantías",
+    "date": "2026-10-15",
+    "authors": ["Ignacio Garrido", "Alex Fierro"],
+    "topics": ["Inflación", "Desempleo", "Modelo Renta-Gasto"],
+    "files": {
+      "listado": "assets/material/ayudantia-06/ayudantia-06.pdf",
+      "latex": "assets/material/ayudantia-06/ayudantia-06.tex",
+      "ppt": "assets/material/ayudantia-06/PPT-ayudantia-06.pdf"
+    }
   }
-    
+
 ]
